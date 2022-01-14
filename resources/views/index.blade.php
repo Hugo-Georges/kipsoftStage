@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('content')
-
 <style>
 
     .uper
@@ -14,28 +13,15 @@
 
     <h1>Rechercher par marque et/ou modèle souhaité</h1>
 
-    <input class="typeahead form-control" type="text" name="search" id="search">
+    <form action="{{ route('index') }}" method="GET">
+        <input class="typeahead form-control" type="text" name="search" required/>
+        <button type="submit" name="search2">Search</button>
+    </form>
+
 
 </div>
 
-<script type="text/javascript">
 
-    var path = "{{ route('autocomplete',$voiture->id) }}";
-
-    $('input.typeahead').typeahead({
-
-        source:  function (query, process) {
-
-        return $.get(path, { query: query }, function (data) {
-
-                return process(data);
-
-            });
-
-        }
-
-    });
-</script>
 
 <div class="uper">
 
@@ -45,8 +31,8 @@
     </div><br />
   @endif
 
-    @if(isset($search))
-        <p> Voici les résultats de votre recherche : <b> {{ $query }} </b> are :</p>
+    @if(isset($search2))
+        <p> Voici les résultats de votre recherche : <b> {{ $query }} </b> est :</p>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -98,7 +84,7 @@
             <td>{{$voiture->prix}}</td>
             <td><a href="{{ route('cars.edit', $voiture->id)}}" class="btn btn-primary">Modifier</a></td>
             <td>
-                <form action="{{ route('cars.create', $voiture->id)}}" method="post">
+                <form action="{{ route('cars.destroy', $voiture->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Supprimer</button>
@@ -111,5 +97,7 @@
   </table>
   @endif
 </div>
+<a href="{{ route('cars.create')}}" class="btn btn-secondary">Ajouter</a>
+
 @endsection
 

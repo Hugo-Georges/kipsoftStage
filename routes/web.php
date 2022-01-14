@@ -20,5 +20,3 @@ Route::get('/', function () {
 });
 
 Route::get('index', [CarController::class, 'index'])->name('index');
-
-Route::get('autocomplete', [CarController::class, 'autocomplete'])->name('autocomplete');

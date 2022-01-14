@@ -18,8 +18,12 @@ class CreateCarsTable extends Migration
             $table->string('marque');
             $table->string('modele');
             $table->integer('prix');
+            $table->integer('comments_id')->unsigned();
+            $table->foreign('comments_id')->references('id')->on('comments');
             $table->timestamps();
+
         });
+
     }
 
     /**
