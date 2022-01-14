@@ -13,25 +13,19 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $voitures = Car::all();
+        if ($search = $request->input('search')){
+            $voitures = Car::query()
+        ->where('marque', 'LIKE', "%{$search}%")
+        ->orWhere('modele', 'LIKE', "%{$search}%")
+        ->get();
+        }
+        else{
+            $voitures = Car::all();
+        }
+        //
         return view('index', compact('voitures'));
-    }
-
-    public function autocomplete(Request $request)
-
-    {
-
-        $data = Car::select("marque")
-
-                ->where("marque","LIKE","%{$request->query}%")
-
-                ->get();
-
-
-
-        return response()->json($data);
     }
 
     /**
