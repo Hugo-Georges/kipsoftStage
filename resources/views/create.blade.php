@@ -7,7 +7,7 @@
   }
 </style>
 
-<div class="card uper">
+<div class="card bg-light text-dark uper">
   <div class="card-header">
     Ajouter une Voiture
   </div>
@@ -20,7 +20,7 @@
               <li>{{ $error }}</li>
             @endforeach
         </ul>
-      </div><br />
+      </div><br/>
     @endif
 
         <form method="post" action="{{ route('cars.store') }}">
@@ -44,8 +44,8 @@
                 <label for="prix">Prix de la voiture :</label>
                 <input type="text" class="form-control" name="prix"/>
             </div>
-
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <br>
+            <button type="submit" class="btn btn-outline-success">Ajouter</button>
         </form>
   </div>
 </div>

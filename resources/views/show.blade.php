@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="card listVoiture">
+<div class="card">
     <div class="card-header">
         Informations sur la voiture
     </div>
@@ -12,8 +12,8 @@
             <li class="list-group-item">Prix : {{ $car->prix }} €</li>
             <li class="list-group-item">Description : {{ $car->description }}</li>
         </ul>
-        @foreach ($comments as $comment)
-            <p>{{ $comment->contenu }}</p>
-        @endforeach
 
 </div>
+@foreach ($comments as $comment)
+            <p>{{ $comment->contenu }}</p>
+        @endforeach
