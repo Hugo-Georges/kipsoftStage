@@ -33,8 +33,8 @@
               <input type="text" class="form-control" name="marque" value="{{ $car->marque }}"/>
           </div>
           <div class="form-group">
-            <label for="marque">Modèle</label>
-            <input type="text" class="form-control" name="marque" value="{{ $car->marque }}"/>
+            <label for="modele">Modèle</label>
+            <input type="text" class="form-control" name="modele" value="{{ $car->modele }}"/>
         </div>
           <div class="form-group">
               <label for="cases">Prix :</label>

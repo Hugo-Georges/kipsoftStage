@@ -65,7 +65,9 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        //
+        $car = Car::findOrFail($id);
+
+        return view('show', compact('car'));
     }
 
     /**
@@ -78,7 +80,7 @@ class CarController extends Controller
     {
         $car = Car::findOrFail($id);
 
-    return view('edit', compact('car'));
+        return view('edit', compact('car'));
     }
 
     /**
@@ -114,4 +116,5 @@ class CarController extends Controller
 
     return redirect('/cars')->with('success', 'Voiture supprimer avec succèss');
     }
+
 }

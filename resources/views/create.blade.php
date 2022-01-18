@@ -23,24 +23,30 @@
       </div><br />
     @endif
 
-      <form method="post" action="{{ route('cars.store') }}">
+        <form method="post" action="{{ route('cars.store') }}">
             @csrf
-          <div class="form-group">
-              <label for="marque">Marque de Voiture:</label>
-              <input type="text" class="form-control" name="marque"/>
-          </div>
+            <div class="form-group">
+                <label for="marque">Marque de Voiture :</label>
+                <input type="text" class="form-control" name="marque"/>
+            </div>
 
-          <div class="form-group">
-            <label for="marque">Modèle de Voiture:</label>
-            <input type="text" class="form-control" name="modele"/>
-        </div>
+             <div class="form-group">
+                <label for="marque">Modèle de Voiture :</label>
+                <input type="text" class="form-control" name="modele"/>
+            </div>
 
-          <div class="form-group">
-              <label for="prix">Prix :</label>
-              <input type="text" class="form-control" name="prix"/>
-          </div>
-          <button type="submit" class="btn btn-primary">Ajouter</button>
-      </form>
+            <div class="form-group">
+                <label for="description">Description de la voiture :</label>
+                <input type="text" class="form-control" name="description"/>
+            </div>
+
+            <div class="form-group">
+                <label for="prix">Prix de la voiture :</label>
+                <input type="text" class="form-control" name="prix"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
   </div>
 </div>
 @endsection

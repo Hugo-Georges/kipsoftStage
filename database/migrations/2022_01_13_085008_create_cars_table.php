@@ -13,13 +13,14 @@ class CreateCarsTable extends Migration
      */
     public function up()
     {
+        //Schema::disableForeignKeyConstraints();
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('marque');
             $table->string('modele');
+            $table->string('description');
             $table->integer('prix');
-            $table->unsignedBigInteger('comments_id');
-            $table->foreign('comments_id')->references('id')->on('comments');
+            //$table->foreignId('comments_id')->constrained('comments');
             $table->timestamps();
 
         });

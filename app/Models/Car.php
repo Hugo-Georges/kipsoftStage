@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     use HasFactory;
-    protected $fillable = ['marque','modele' ,'prix' ];
+    protected $fillable = ['marque','modele' ,'description' ,'prix' ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
