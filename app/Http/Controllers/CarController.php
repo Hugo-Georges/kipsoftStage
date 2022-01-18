@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
-
+use App\Models\Comment;
 
 class CarController extends Controller
 {
@@ -66,6 +66,7 @@ class CarController extends Controller
     public function show($id)
     {
         $car = Car::findOrFail($id);
+        //$comment = Comment::
 
         return view('show', compact('car'));
     }
@@ -112,9 +113,9 @@ class CarController extends Controller
     public function destroy($id)
     {
         $car = Car::findOrFail($id);
-    $car->delete();
+        $car->delete();
 
-    return redirect('/cars')->with('success', 'Voiture supprimer avec succèss');
+        return redirect('/cars')->with('success', 'Voiture supprimer avec succèss');
     }
 
 }

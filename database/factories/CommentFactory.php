@@ -14,8 +14,10 @@ class CommentFactory extends Factory
     public function definition()
     {
         $contenu = $this->faker->word();
+        $car_id ="";
         return [
             'contenu' => $contenu,
+            'car_id' => $car_id,
         ];
     }
 }

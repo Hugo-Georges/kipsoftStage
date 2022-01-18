@@ -83,6 +83,7 @@
             <td>{{$voiture->modele }}
             <td>{{$voiture->prix}}</td>
             <td><a href="{{ route('cars.edit', $voiture->id)}}" class="btn btn-primary">Modifier</a></td>
+            <td><a href="{{ route('cars.show', $voiture->id)}}" class="btn btn-primary">Détail</a></td>
             <td>
                 <form action="{{ route('cars.destroy', $voiture->id)}}" method="post">
                   @csrf
