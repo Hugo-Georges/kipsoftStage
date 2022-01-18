@@ -12,4 +12,8 @@
             <li class="list-group-item">Prix : {{ $car->prix }} €</li>
             <li class="list-group-item">Description : {{ $car->description }}</li>
         </ul>
+        @foreach ($comments as $comment)
+            <p>{{ $comment->contenu }}</p>
+        @endforeach
+
 </div>
