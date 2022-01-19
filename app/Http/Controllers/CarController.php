@@ -38,11 +38,6 @@ class CarController extends Controller
         return view('create');
     }
 
-    public function newcomment()
-    {
-        return view('newcomment');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -61,16 +56,6 @@ class CarController extends Controller
         $car = Car::create($validatedData);
 
         return redirect('/cars')->with('success', 'Voiture créer avec succès');
-    }
-    public function storecomment(Request $request)
-    {
-        $validatedData = $request->validate([
-            'contenu' => 'required|max:255',
-        ]);
-
-        $comment = Comment::newcomment($validatedData);
-
-        return redirect('/cars')->with('success', 'Commentaire publier avec succès');
     }
 
     /**

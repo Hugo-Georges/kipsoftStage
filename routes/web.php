@@ -3,6 +3,7 @@
 use App\Models\Car;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +21,6 @@ Route::get('/', function () {
 });
 
 Route::get('index', [CarController::class, 'index'])->name('index');
+
+
+Route::resource('cars.comments', CommentController::class);

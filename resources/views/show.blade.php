@@ -20,21 +20,16 @@
         </ul>
 
     </div>
+    <div class="card-header">
+        Commentaires sur la voiture
+    </div>
     <div class ="card body">
         @foreach ($comments as $comment)
-        <p>{{ $comment->contenu }}</p>
-    @endforeach
-
-    <div class="d-md-flex justify-content-md-end">
-        <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
-    </div>
-    </div>
-</div>
-@foreach ($comments as $comment)
-        <p>{{ $comment->contenu }}</p>
-    @endforeach
-
-    <div class="d-md-flex justify-content-md-end">
-        <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+            <p>{{ $comment->contenu }}</p>
+        @endforeach
+        <a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
+        <div class="d-md-flex justify-content-md-end">
+            <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+        </div>
     </div>
 </div>
