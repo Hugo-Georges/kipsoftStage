@@ -27,7 +27,7 @@
         @foreach ($comments as $comment)
             <p>{{ $comment->contenu }}</p>
         @endforeach
-        <a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
+        <a href="{{ route('cars.comments.create', $car->id)}}" class="btn btn-outline-success">Ajouter</a>
         <div class="d-md-flex justify-content-md-end">
             <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
         </div>

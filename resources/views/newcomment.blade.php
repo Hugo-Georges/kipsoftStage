@@ -9,7 +9,7 @@
 
 <div class="card bg-light text-dark uper">
   <div class="card-header">
-    Ajouter une Voiture
+    Ajouter un commentaire
   </div>
 
   <div class="card-body">
@@ -23,7 +23,7 @@
       </div><br/>
     @endif
 
-        <form method="post" action="{{ route('cars.commentstore') }}">
+        <!--<form method="post" action="">
             @csrf
             <div class="form-group">
                 <label for="marque">Marque de Voiture :</label>
@@ -36,9 +36,9 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Description de la voiture :</label>
+                <label for="description">Description de la voiture :</label>-->
                 <!--<input type="text" class="form-control" name="description"/>-->
-                <textarea class="form-control" rows="4" name="description"></textarea>
+                <!--<textarea class="form-control" rows="4" name="description"></textarea>
 
             </div>
 
@@ -48,7 +48,7 @@
             </div>
             <br>
             <button type="submit" class="btn btn-outline-success">Ajouter</button>
-        </form>
+        </form>-->
   </div>
 </div>
 @endsection
