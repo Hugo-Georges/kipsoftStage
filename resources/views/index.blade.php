@@ -9,14 +9,16 @@
         background-color: #000000;
     }
 </style>
+<br>
 <div class="container-*">
 
-    <h1>Rechercher par marque et/ou modèle souhaité</h1>
-
     <form action="{{ route('index') }}" method="GET" class="form-inline">
-        <input class="form-control" type="text" name="search" required/>
-        <button type="submit" name="search2" class="btn btn-outline-dark">Search</button>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Rechercher par marque et/ou modèle souhaité" name="search" required/>
+            <button type="submit" name="search2" class="btn btn-outline-dark">Search</button>
+        </div>
     </form>
+
 
 
 </div>
@@ -58,6 +60,8 @@
   </table>
 </div>
 <a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
-
+<div class="d-md-flex justify-content-md-end">
+    <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+</div>
 @endsection
 

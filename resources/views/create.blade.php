@@ -37,7 +37,9 @@
 
             <div class="form-group">
                 <label for="description">Description de la voiture :</label>
-                <input type="text" class="form-control" name="description"/>
+                <!--<input type="text" class="form-control" name="description"/>-->
+                <textarea class="form-control" rows="4" name="description"></textarea>
+
             </div>
 
             <div class="form-group">

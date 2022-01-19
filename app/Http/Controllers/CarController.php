@@ -49,6 +49,7 @@ class CarController extends Controller
         $validatedData = $request->validate([
             'marque' => 'required|max:255',
             'modele' => 'required|max:255',
+            'description' => 'required|max:255',
             'prix' => 'required',
         ]);
 
@@ -97,6 +98,7 @@ class CarController extends Controller
         $validatedData = $request->validate([
             'marque' => 'required|max:255',
             'modele' => 'required|max:255',
+            'description' => 'required|max:255',
             'prix' => 'required'
         ]);
 

@@ -1,7 +1,12 @@
 @extends('layout')
 
 @section('content')
-<div class="card">
+<style>
+    .uper {
+      margin-top: 40px;
+    }
+  </style>
+<div class="card uper">
     <div class="card-header">
         Informations sur la voiture
     </div>
@@ -15,5 +20,8 @@
 
 </div>
 @foreach ($comments as $comment)
-            <p>{{ $comment->contenu }}</p>
-        @endforeach
+    <p>{{ $comment->contenu }}</p>
+@endforeach
+            <div class="d-md-flex justify-content-md-end">
+            <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+            </div>
