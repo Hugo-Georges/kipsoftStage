@@ -19,10 +19,11 @@ class CarController extends Controller
             $voitures = Car::query()
         ->where('marque', 'LIKE', "%{$search}%")
         ->orWhere('modele', 'LIKE', "%{$search}%")
-        ->get();
+        ->orderBy('id','asc')->paginate(10);
         }
         else{
-            $voitures = Car::all();
+            //$voitures = Car::all();
+            $voitures = Car::query()->orderBy('id','asc')->paginate(10);
         }
         //
         return view('index', compact('voitures'));

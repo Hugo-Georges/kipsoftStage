@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <label for="description">Description de la voiture :</label>
-                <input class="form-control" rows="4" name="description" value="{{ $car->description }}"/>
+                <textarea class="form-control" rows="4" name="description">{{ $car->description }}</textarea>
             </div>
 
             <div class="form-group">

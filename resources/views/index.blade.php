@@ -58,6 +58,9 @@
     </tbody>
   </table>
 </div>
+<ul class="pagination justify-content-center mb-4">
+    {{$voitures->links("pagination::bootstrap-4")}}
+</ul>
 <a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
 <div class="d-md-flex justify-content-md-end">
     <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>

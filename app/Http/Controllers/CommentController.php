@@ -35,12 +35,28 @@ class CommentController extends Controller
     {
         $validatedData2 = $request2->validate([
             'contenu' => 'required|max:255',
-            'car_id' => $car_id,
+            //'car_id' => $car_id,
         ]);
 
-        $comment = Comment::create($validatedData2);
+        $comment = Comment::create($validatedData2 + ['car_id' => $car_id]);
 
-        return redirect('car.show')/*->with('success', 'Voiture créer avec succès')*/;
+        //return view('show'/*, compact('car_id')*/)->with('car_id', $comment)->with('success', 'commentaire publier avec succès');
+        return redirect('/cars/'.$car_id)->with('success', 'Voiture supprimer avec succèss');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @param  int  $car_id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($car_id, Comment $comment)
+    {
+        //$comment = Comment::findOrFail($id);
+        $comment->delete();
+
+        return redirect('/cars/'.$car_id)->with('success', 'Voiture supprimer avec succèss');
     }
 
 
