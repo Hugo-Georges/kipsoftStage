@@ -48,6 +48,9 @@
             </div>
             <br>
             <button type="submit" class="btn btn-outline-success">Ajouter</button>
+            <div class="d-md-flex justify-content-md-end">
+                <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+            </div>
         </form>
   </div>
 </div>

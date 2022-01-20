@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-    protected $fillable = ['contenu'];
+    protected $fillable = ['contenu', 'car_id'];
     public function comment()
     {
         return $this->belongsTo(Car::class);
