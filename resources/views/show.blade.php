@@ -6,7 +6,7 @@
       margin-top: 40px;
     }
   </style>
-<div class="card uper bg-light text-dark" style="width: 50rem;">
+<div class="card uper bg-light text-dark" style="width: 80rem;">
     <div class="card-header">
         Informations sur la voiture
     </div>
@@ -28,12 +28,14 @@
               </form>
         @endforeach
         <br>
-        <div class="d-md-flex justify-content">
-            <a href="{{ route('cars.comments.create', $car->id)}}" class="btn btn-outline-success">Ajouter</a>
-        </div>
-        <div class="d-md-flex justify-content-md-end">
-            <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
-        </div>
+
     </div>
+</div>
+<br>
+<div class="d-md-flex justify-content">
+    <a href="{{ route('cars.comments.create', $car->id)}}" class="btn btn-outline-success">Ajouter</a>
+</div>
+<div class="d-md-flex justify-content-md-end">
+    <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
 </div>
 @endsection
