@@ -13,7 +13,7 @@ class CreateCarsTable extends Migration
      */
     public function up()
     {
-        //Schema::disableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('marque');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Schema;
 
 class CarController extends Controller
 {
@@ -110,7 +111,7 @@ class CarController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     *@param  \Illuminate\Database\Schema
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

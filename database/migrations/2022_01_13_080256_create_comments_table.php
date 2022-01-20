@@ -21,8 +21,8 @@ class CreateCommentsTable extends Migration
             $table->foreign('car_id')
                 ->references('id')
                 ->on('cars')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

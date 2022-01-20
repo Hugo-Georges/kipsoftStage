@@ -19,6 +19,9 @@
         </ul>
         <br>
         <h5 class="card-title">Commentaires : </h5>
+        @if (!$comments->isNotEmpty())
+            <p>Soyez la première personne à mettre un commentaire pour cette voiture</p>
+        @else
         @foreach ($comments as $comment)
             <p>{{ $comment->contenu }}</p>
             <form action="{{ route('cars.comments.destroy', [$car->id, $comment->id])}}" method="post">
@@ -27,8 +30,8 @@
                 <button class="btn btn-outline-danger" type="submit">Supprimer</button>
               </form>
         @endforeach
+        @endif
         <br>
-
     </div>
 </div>
 <br>
