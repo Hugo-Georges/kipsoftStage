@@ -46,6 +46,17 @@
                 <label for="cases">Prix :</label>
                 <input type="text" class="form-control" name="prix" value="{{ $car->prix }}"/>
             </div>
+
+            <div class="form-group">
+                <label for="prix">Année de fabrication de la voiture  :</label>
+                <input type="number" class="form-control" name="annee" min="0" max="2022" value="{{ $car->annee }}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="prix">Kilométrage de la voiture :</label>
+                <input type="number" class="form-control" name="km" min="0" value="{{ $car->km }}"/>
+            </div>
+
             <br>
             <button type="submit" class="btn btn-outline-secondary">Modifier</button>
             <div class="d-md-flex justify-content-md-end">

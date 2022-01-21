@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         Car::factory()
         ->has(Comment::factory()->count(4))
-        ->count(10)
+        ->count(20)
         ->create();
     }
 }

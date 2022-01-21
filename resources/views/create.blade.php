@@ -39,13 +39,23 @@
                 <label for="description">Description de la voiture :</label>
                 <!--<input type="text" class="form-control" name="description"/>-->
                 <textarea class="form-control" rows="4" name="description"></textarea>
-
             </div>
 
             <div class="form-group">
                 <label for="prix">Prix de la voiture :</label>
-                <input type="text" class="form-control" name="prix"/>
+                <input type="number" class="form-control" name="prix" min ="0"/>
             </div>
+
+            <div class="form-group">
+                <label for="prix">Année de fabrication de la voiture  :</label>
+                <input type="number" class="form-control" name="annee" min="1884" max="2022"/>
+            </div>
+
+            <div class="form-group">
+                <label for="prix">Kilométrage de la voiture :</label>
+                <input type="number" class="form-control" name="km" min="0"/>
+            </div>
+
             <br>
             <button type="submit" class="btn btn-outline-success">Ajouter</button>
             <div class="d-md-flex justify-content-md-end">

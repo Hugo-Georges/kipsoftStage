@@ -20,7 +20,14 @@ class CreateCarsTable extends Migration
             $table->string('modele');
             $table->string('description');
             $table->integer('prix');
-            //$table->foreignId('comments_id')->constrained('comments');
+            $table->integer('annee');
+            $table->integer('km');
+            /*$table->unsignedBigInteger('motor_id');
+            $table->foreign('motor_id')
+                ->references('id')
+                ->on('motors')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');*/
             $table->timestamps();
 
         });

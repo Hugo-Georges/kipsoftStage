@@ -27,7 +27,14 @@ class CarController extends Controller
             $cars = Car::query()->orderBy('id','asc')->paginate(10);
         }
         //
-        return view('index', compact('cars'));
+        return view('listCars', compact('cars'));
+    }
+
+    public function listCars()
+    {
+        $cars = Car::query()->orderBy('id','asc')->paginate(9);
+        //
+        //return view('lisCars', compact('cars'));
     }
 
     /**
@@ -53,6 +60,8 @@ class CarController extends Controller
             'modele' => 'required|max:255',
             'description' => 'required|max:255',
             'prix' => 'required',
+            'annee' => 'required',
+            'km' => 'required',
         ]);
 
         $car = Car::create($validatedData);
@@ -74,6 +83,15 @@ class CarController extends Controller
 
         return view('show', compact('car', 'comments'));
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -101,7 +119,9 @@ class CarController extends Controller
             'marque' => 'required|max:255',
             'modele' => 'required|max:255',
             'description' => 'required|max:255',
-            'prix' => 'required'
+            'prix' => 'required|max:11',
+            'annee' => 'required',
+            'km' => 'required',
         ]);
 
         Car::whereId($id)->update($validatedData);

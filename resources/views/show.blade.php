@@ -14,8 +14,10 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Marque : {{ $car->marque }}</li>
             <li class="list-group-item">Modele : {{ $car->modele }}</li>
-            <li class="list-group-item">Prix : {{ $car->prix }} €</li>
+            <li class="list-group-item">Anée de fabrication : {{ $car->annee }}</li>
+            <li class="list-group-item">Kilométrage : {{ $car->km }}</li>
             <li class="list-group-item">Description : {{ $car->description }}</li>
+            <li class="list-group-item">Prix : {{ $car->prix }} €</li>
         </ul>
         <br>
         <h5 class="card-title">Commentaires : </h5>

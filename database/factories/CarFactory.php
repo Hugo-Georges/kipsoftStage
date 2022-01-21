@@ -17,11 +17,15 @@ class CarFactory extends Factory
         $modele = $this->faker->word();
         $description = $this->faker->word();
         $prix = $this->faker->randomDigitNotNull();
+        $annee = $this->faker->randomDigitNotNull();
+        $km = $this->faker->randomDigitNotNull();
         return [
             'marque' => $marque,
             'modele' => $modele,
             'description' => $description,
             'prix' => $prix,
+            'annee' => $annee,
+            'km' => $km
         ];
     }
 }

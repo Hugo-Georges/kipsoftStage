@@ -5,19 +5,18 @@
 <form action="{{ route('index') }}" method="GET" class="form-inline">
 </form>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Voiture</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
     </button>
     <input class="form-control form-control-dark w-100" type="text" placeholder="Rechercher par marque et/ou modèle souhaité" aria-label="Search">
     <div class="navbar-nav">
-      <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Sign out</a>
-      </div>
+        <div class="nav-item text-nowrap">
+            <a class="nav-link px-3" href="#">Sign out</a>
+        </div>
     </div>
 
-  </header>
+</header>
 <!--<div class="container-*">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Rechercher par marque et/ou modèle souhaité" name="search" required/>
@@ -37,7 +36,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('voitures') }}">
+              <a class="nav-link" href="{{ route('cars.listCars') }}">
                 <span data-feather="file"></span>
                 Voitures
               </a>
@@ -121,46 +120,50 @@
 
         <h2>Section title</h2>
 
-<div class="uper">
-    <table class="table table-dark table-hover">
-    <thead>
-        <tr>
-          <td>ID</td>
-          <td>Marque</td>
-          <td>Modele</td>
-          <td>Prix</td>
-          <td colspan="3">Action</td>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach($cars as $car)
-        <tr>
-            <td>{{$car->id}}</td>
-            <td>{{$car->marque}}</td>
-            <td>{{$car->modele }}
-            <td>{{$car->prix}}</td>
-            <td><a href="{{ route('cars.edit', $car->id)}}" class="btn btn-outline-secondary">Modifier</a></td>
-            <td><a href="{{ route('cars.show', $car->id)}}" class="btn btn-outline-info">Détail</a></td>
-            <td>
-                <form action="{{ route('cars.destroy', $car->id)}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-outline-danger" type="submit">Supprimer</button>
-                </form>
-            </td>
-            <td></td>
-        </tr>
-        @endforeach
-    </tbody>
-  </table>
+        <div class="text-center">
+            <table class="table table-dark table-hover"><!--Tableau avec l'ensemble des voitures -->
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Marque</td>
+                        <td>Modele</td>
+                        <td>Prix</td>
+                        <td>Année</td>
+                        <td>Kilométrage</td>
+                        <td colspan="3">Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($cars as $car)
+                    <tr>
+                        <td>{{$car->id}}</td>
+                        <td>{{$car->marque}}</td>
+                        <td>{{$car->modele }}
+                        <td>{{$car->prix}}</td>
+                        <td>{{ $car->annee }}</td>
+                        <td>{{ $car->km }}</td>
+                        <td><a href="{{ route('cars.show', $car->id)}}" class="btn btn-outline-info">Détail</a></td><!--Pour voir le détail d'une voiture-->
+                        <td><a href="{{ route('cars.edit', $car->id)}}" class="btn btn-outline-secondary">Modifier</a></td><!--Pour modifier une voiture-->
+                        <td>
+                            <form action="{{ route('cars.destroy', $car->id)}}" method="post"><!--Pour supprimer une voiture-->
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-outline-danger" type="submit">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <ul class="pagination justify-content-center mb-4">
+            {{$cars->links("pagination::bootstrap-4")}}
+        </ul>
+        <a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
+        <div class="d-md-flex justify-content-md-end">
+            <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+        </div>
+    </div>
 </div>
-<ul class="pagination justify-content-center mb-4">
-    {{$cars->links("pagination::bootstrap-4")}}
-</ul>
-<a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
-<div class="d-md-flex justify-content-md-end">
-    <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
-</div>
-
+<img src="https://loremflickr.com/320/240/car">
 @endsection

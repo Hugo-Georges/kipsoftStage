@@ -20,7 +20,7 @@ Route::resource('cars', 'CarController');
 Route::resource('cars.comments', 'CommentController');
 
 Route::get('/', function () {
-    return view('accueil');
+    return view('cars');
 });
 
 Route::get('index', [CarController::class, 'index'])->name('index');
