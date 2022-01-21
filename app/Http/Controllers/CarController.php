@@ -17,17 +17,17 @@ class CarController extends Controller
     public function index(Request $request)
     {
         if ($search = $request->input('search')){
-            $voitures = Car::query()
+            $cars = Car::query()
         ->where('marque', 'LIKE', "%{$search}%")
         ->orWhere('modele', 'LIKE', "%{$search}%")
         ->orderBy('id','asc')->paginate(10);
         }
         else{
             //$voitures = Car::all();
-            $voitures = Car::query()->orderBy('id','asc')->paginate(10);
+            $cars = Car::query()->orderBy('id','asc')->paginate(10);
         }
         //
-        return view('index', compact('voitures'));
+        return view('index', compact('cars'));
     }
 
     /**
