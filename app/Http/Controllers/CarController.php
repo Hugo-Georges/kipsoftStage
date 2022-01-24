@@ -27,14 +27,14 @@ class CarController extends Controller
             $cars = Car::query()->orderBy('id','asc')->paginate(10);
         }
         //
-        return view('listCars', compact('cars'));
+        return view('index', compact('cars'));
     }
 
     public function listCars()
     {
         $cars = Car::query()->orderBy('id','asc')->paginate(9);
         //
-        //return view('lisCars', compact('cars'));
+        return view('listCars', compact('cars'));
     }
 
     /**

@@ -2,21 +2,21 @@
 @extends('layout2')
 
 @section('content2')
-<form action="{{ route('index') }}" method="GET" class="form-inline">
+<form action="{{ route('index') }}" method="GET">
 </form>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Voiture</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Rechercher par marque et/ou modèle souhaité" aria-label="Search">
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" name ="search" id="search" action="{{ route('index') }}">
     <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" href="#">Sign out</a>
-        </div>
+      <div class="nav-item text-nowrap">
+        <a class="nav-link px-3" href="#">Sign out</a>
+      </div>
     </div>
+  </header>
 
-</header>
 <!--<div class="container-*">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Rechercher par marque et/ou modèle souhaité" name="search" required/>
@@ -36,7 +36,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('cars.listCars') }}">
+              <a class="nav-link active" aria-current="page" href="{{ route('listCars') }}">
                 <span data-feather="file"></span>
                 Voitures
               </a>
@@ -120,8 +120,8 @@
 
         <h2>Section title</h2>
 
-        <div class="text-center">
-            <table class="table table-dark table-hover"><!--Tableau avec l'ensemble des voitures -->
+        <div class="table-responsive text-center">
+            <table class="table table-striped table-sm"><!--Tableau avec l'ensemble des voitures -->
                 <thead>
                     <tr>
                         <td>ID</td>
@@ -163,7 +163,8 @@
         <div class="d-md-flex justify-content-md-end">
             <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
         </div>
+      </main>
     </div>
 </div>
-<img src="https://loremflickr.com/320/240/car">
+
 @endsection

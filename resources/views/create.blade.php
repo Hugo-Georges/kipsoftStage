@@ -6,7 +6,7 @@
     margin-top: 40px;
   }
 </style>
-
+<div class="container">
 <div class="card bg-light text-dark uper">
   <div class="card-header">
     Ajouter une Voiture
@@ -63,5 +63,6 @@
             </div>
         </form>
   </div>
+</div>
 </div>
 @endsection

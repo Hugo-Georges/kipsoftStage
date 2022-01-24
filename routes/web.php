@@ -20,9 +20,10 @@ Route::resource('cars', 'CarController');
 Route::resource('cars.comments', 'CommentController');
 
 Route::get('/', function () {
-    return view('cars');
+    return view('welcome');
 });
 
 Route::get('index', [CarController::class, 'index'])->name('index');
+Route::get('listCars', [CarController::class, 'listCars'])->name('listCars');
 
 
