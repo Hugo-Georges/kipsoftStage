@@ -6,6 +6,7 @@
       margin-top: 40px;
     }
   </style>
+
 <div class="card uper bg-light text-dark" style="width: 80rem;">
     <div class="card-header">
         Informations sur la voiture

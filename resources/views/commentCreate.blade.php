@@ -6,7 +6,7 @@
     margin-top: 40px;
   }
 </style>
-
+<main>
 <div class="card bg-light text-dark uper">
     <div class="card-header">
       Ajouter un commentaire pour cette voiture
@@ -36,4 +36,5 @@
         </div>
   </div>
 </div>
+</main>
 @endsection
