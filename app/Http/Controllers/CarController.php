@@ -21,6 +21,7 @@ class CarController extends Controller
             $cars = Car::query()
         ->where('marque', 'LIKE', "%{$search}%")
         ->orWhere('modele', 'LIKE', "%{$search}%")
+        ->andWhere(('motor_id', $motor_id)->get()
         ->orderBy('id','asc')->paginate(10);
         }
         else{
@@ -28,7 +29,7 @@ class CarController extends Controller
             $cars = Car::query()->orderBy('id','asc')->paginate(10);
         }
         //
-        return view('index', compact('cars',));
+        return view('index', compact('cars', 'motors'));
     }
 
     public function listCars()
@@ -46,7 +47,7 @@ class CarController extends Controller
     public function create()
     {
         $motors = Motorisation::all();
-        return view('create', compact('motors'));
+    return view('create', compact('motors'));
     }
 
     /**

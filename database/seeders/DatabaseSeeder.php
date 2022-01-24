@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Car::factory()
-        ->has(Motorisation::factory())
         ->has(Comment::factory()->count(4))
         ->count(20)
         ->create();
