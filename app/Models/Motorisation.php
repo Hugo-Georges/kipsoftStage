@@ -21,4 +21,9 @@ class Motorisation extends Model
 
     protected $fillable = ['type'];
 
+    public function motorisations()
+    {
+        return $this->hasMany(Car::class);
+    }
+
 }

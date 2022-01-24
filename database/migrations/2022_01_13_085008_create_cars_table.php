@@ -22,12 +22,12 @@ class CreateCarsTable extends Migration
             $table->integer('prix');
             $table->integer('annee');
             $table->integer('km');
-            /*$table->unsignedBigInteger('motor_id');
+            $table->unsignedBigInteger('motor_id');
             $table->foreign('motor_id')
                 ->references('id')
-                ->on('motors')
+                ->on('mtorisations')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');*/
+                ->onUpdate('cascade');
             $table->timestamps();
 
         });

@@ -27,13 +27,21 @@
                                     <li class="list-group-item">Description : {{ $car->description }}</li>
                                     <li class="list-group-item">Prix : {{ $car->prix }} €</li>
                                 </ul>
-                                <a href="{{ route('cars.show', $car->id)}}" class="btn btn-outline-info">Détail</a><!--Pour voir plus d'informations sur une voiture-->
-                                <a href="{{ route('cars.edit', $car->id)}}" class="btn btn-outline-secondary">Modifier</a><!--Pour modifier une voiture-->
-                                <form action="{{ route('cars.destroy', $car->id)}}" method="post"><!--Pour supprimer une voiture-->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                      <a href="{{ route('cars.show', $car->id)}}" class="btn btn-outline-info">Détail</a>
+                                      <a href="{{ route('cars.edit', $car->id)}}" class="btn btn-outline-secondary">Modifier</a><!--Pour modifier une voiture-->
+                                      <form action="{{ route('cars.destroy', $car->id)}}" method="post"><!--Pour supprimer une voiture-->
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-outline-danger" type="submit">Supprimer</button>
                                 </form>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                  </div>
+                                <!--Pour voir plus d'informations sur une voiture-->
+
+
                             </div>
                         </div>
 
