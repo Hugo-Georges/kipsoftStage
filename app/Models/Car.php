@@ -16,7 +16,7 @@ class Car extends Model
 
     }
 
-    public function motorisations()
+    public function motorisation()
     {
         return $this->belongsTo(Motorisation::class);
     }

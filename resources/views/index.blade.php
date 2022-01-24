@@ -36,6 +36,7 @@
                         <td>Prix</td>
                         <td>Année</td>
                         <td>Kilométrage</td>
+                        <td>Motorisation</td>
                         <td colspan="3">Action</td>
                     </tr>
                 </thead>

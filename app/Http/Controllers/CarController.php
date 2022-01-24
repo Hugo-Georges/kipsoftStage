@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Comment;
+use App\Models\Motorisation;
 use Illuminate\Support\Facades\Schema;
 
 class CarController extends Controller
@@ -27,7 +28,7 @@ class CarController extends Controller
             $cars = Car::query()->orderBy('id','asc')->paginate(10);
         }
         //
-        return view('index', compact('cars'));
+        return view('index', compact('cars',));
     }
 
     public function listCars()
@@ -44,7 +45,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $motors = Motorisation::all();
+        return view('create', compact('motors'));
     }
 
     /**
@@ -62,6 +64,7 @@ class CarController extends Controller
             'prix' => 'required',
             'annee' => 'required',
             'km' => 'required',
+            'motor_id' => 'required',
         ]);
 
         $car = Car::create($validatedData);
@@ -122,6 +125,7 @@ class CarController extends Controller
             'prix' => 'required|max:11',
             'annee' => 'required',
             'km' => 'required',
+            'motor_id' => 'required',
         ]);
 
         Car::whereId($id)->update($validatedData);

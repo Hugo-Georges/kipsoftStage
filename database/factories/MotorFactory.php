@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-
 class MotorFactory extends Factory
 {
     /**
@@ -13,8 +12,9 @@ class MotorFactory extends Factory
      */
     public function definition()
     {
+        $type = $this->call(MotorTableSeeder::class);
         return [
-            'type' => '',
+            'type' => $type,
         ];
     }
 }

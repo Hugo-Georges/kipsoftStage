@@ -59,5 +59,4 @@ class CommentController extends Controller
         return redirect('/cars/'.$car_id)->with('success', 'Voiture supprimer avec succèss');
     }
 
-
 }
