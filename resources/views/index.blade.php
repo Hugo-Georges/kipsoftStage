@@ -49,6 +49,7 @@
                         <td>{{$car->prix}}</td>
                         <td>{{ $car->annee }}</td>
                         <td>{{ $car->km }}</td>
+                        <td>{{ $car->motor_id }}
                         <td><a href="{{ route('cars.show', $car->id)}}" class="btn btn-outline-info">Détail</a></td><!--Pour voir plus d'informations sur une voiture-->
                         <td><a href="{{ route('cars.edit', $car->id)}}" class="btn btn-outline-secondary">Modifier</a></td><!--Pour modifier une voiture-->
                         <td>
@@ -63,13 +64,14 @@
                 </tbody>
             </table>
         </div>
-        <ul class="pagination justify-content-center mb-4">
-            {{$cars->links("pagination::bootstrap-4")}}
-        </ul>
+
         <a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
         <div class="d-md-flex justify-content-md-end">
             <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
         </div>
+        <ul class="pagination justify-content-center mb-4">
+            {{$cars->links("pagination::bootstrap-4")}}
+        </ul>
       </main>
     </div>
 </div>

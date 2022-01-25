@@ -12,21 +12,23 @@ class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * @param int $motor_id
      * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function index(Request $request)
     {
+        $motor_id = 1;
         if ($search = $request->input('search')){
             $cars = Car::query()
         ->where('marque', 'LIKE', "%{$search}%")
         ->orWhere('modele', 'LIKE', "%{$search}%")
-        //->andWhere(('motor_id', $motor_id)->get()
         ->orderBy('id','asc')->paginate(10);
         }
         else{
             //$voitures = Car::all();
-            $cars = Car::query()->orderBy('id','asc')->paginate(10);
+            $cars = Car::query()
+            ->orderBy('id','asc')->paginate(10);
         }
         //
         return view('index', compact('cars'));
@@ -106,8 +108,8 @@ class CarController extends Controller
     public function edit($id)
     {
         $car = Car::findOrFail($id);
-
-        return view('edit', compact('car'));
+        $motors = Motorisation::all();
+        return view('edit', compact('car','motors'));
     }
 
     /**

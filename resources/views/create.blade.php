@@ -36,6 +36,14 @@
             </div>
 
             <div class="form-group">
+                <label for="motor_id">Motorisation de la voiture :</label>
+                <select class="form-control" id="motor_id" name="motor_id">
+                    @foreach ($motors as $motor)
+                        <option value="{{ $motor->id }}">{{ $motor->type }}</option>
+                    @endforeach
+            </div>
+
+            <div class="form-group">
                 <label for="description">Description de la voiture :</label>
                 <!--<input type="text" class="form-control" name="description"/>-->
                 <textarea class="form-control" rows="4" name="description"></textarea>
@@ -56,13 +64,7 @@
                 <input type="number" class="form-control" name="km" min="0"/>
             </div>
 
-            <div class="form-group">
-                <label for="motor">Motorisation de la voiture :</label>
-                <select class="form-select" id="motor_id" name="motor_id">
-                    @foreach ($motors as $motor)
-                        <option value="{{ $motor->type }}">{{ $motor->type }}</option>
-                    @endforeach
-            </div>
+
             <button type="submit" class="btn btn-outline-success">Ajouter</button>
             <div class="d-md-flex justify-content-md-end">
                 <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>

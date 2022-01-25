@@ -19,6 +19,8 @@ Route::resource('cars', 'CarController');
 
 Route::resource('cars.comments', 'CommentController');
 
+//Route::ressource('motors.cars', 'CarController');
+
 Route::get('/', function () {
     return view('welcome');
 });

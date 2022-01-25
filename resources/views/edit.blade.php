@@ -53,6 +53,15 @@
             </div>
 
             <div class="form-group">
+                <label for="motor">Motorisation de la voiture :</label>
+                <select class="form-select" id="motor_id" name="motor_id">
+                    @foreach ($motors as $motor)
+                        <option value="{{ $motor->id }}">{{ $motor->type }}</option>
+                    @endforeach
+            </div>
+            <br>
+
+            <div class="form-group">
                 <label for="prix">Kilométrage de la voiture :</label>
                 <input type="number" class="form-control" name="km" min="0" value="{{ $car->km }}"/>
             </div>

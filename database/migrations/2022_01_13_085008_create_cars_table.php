@@ -13,7 +13,7 @@ class CreateCarsTable extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
+        //Schema::disableForeignKeyConstraints();
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('marque');
@@ -23,11 +23,11 @@ class CreateCarsTable extends Migration
             $table->integer('annee');
             $table->integer('km');
             $table->unsignedBigInteger('motor_id');
-            $table->foreign('motor_id')
+            /*$table->foreign('motor_id')
                 ->references('id')
-                ->on('mtorisations')
+                ->on('motorisations')
                 ->onDelete('cascade')
-                ->onUpdate('cascade');
+                ->onUpdate('cascade');*/
             $table->timestamps();
 
         });

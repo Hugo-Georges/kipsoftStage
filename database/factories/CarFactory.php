@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Comment;
+use App\Models\Motorisation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CarFactory extends Factory
@@ -18,8 +20,9 @@ class CarFactory extends Factory
         $description = $this->faker->word();
         $prix = $this->faker->randomDigitNotNull();
         $annee = $this->faker->randomDigitNotNull();
-        $km = $this->faker->randomDigitNotNull();
-        $motor_id= $this->faker->numberBetween($min = 1, $max = 6);
+        $km = $this->faker->randomDigitNotNull();;
+        $motor_id = Motorisation::inRandomOrder()->first()->id;
+
         return [
             'marque' => $marque,
             'modele' => $modele,
