@@ -36,11 +36,12 @@
             </div>
 
             <div class="form-group">
-                <label for="motor_id">Motorisation de la voiture :</label>
-                <select class="form-control" id="motor_id" name="motor_id">
+                <label for="motor_type">Motorisation de la voiture :</label>
+                <select class="form-control" id="motor_type" name="motor_type">
                     @foreach ($motors as $motor)
                         <option value="{{ $motor->id }}">{{ $motor->type }}</option>
                     @endforeach
+                </select>
             </div>
 
             <div class="form-group">

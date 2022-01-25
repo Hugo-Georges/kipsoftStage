@@ -21,7 +21,7 @@ class CarFactory extends Factory
         $prix = $this->faker->randomDigitNotNull();
         $annee = $this->faker->randomDigitNotNull();
         $km = $this->faker->randomDigitNotNull();;
-        $motor_id = Motorisation::inRandomOrder()->first()->id;
+        $motor_type = Motorisation::inRandomOrder()->first()->type;
 
         return [
             'marque' => $marque,
@@ -30,7 +30,7 @@ class CarFactory extends Factory
             'prix' => $prix,
             'annee' => $annee,
             'km' => $km,
-            'motor_id' => $motor_id,
+            'motor_type' => $motor_type,
         ];
     }
 }

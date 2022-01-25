@@ -12,13 +12,12 @@ class CarController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * @param int $motor_id
      * @return \Illuminate\Http\Response
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function index(Request $request)
     {
-        $motor_id = 1;
+
         if ($search = $request->input('search')){
             $cars = Car::query()
         ->where('marque', 'LIKE', "%{$search}%")
@@ -34,9 +33,23 @@ class CarController extends Controller
         return view('index', compact('cars'));
     }
 
-    public function listCars()
+    /**
+     * Display a listing of the resource.
+     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function listCars(Request $request)
     {
-        $cars = Car::query()->orderBy('id','asc')->paginate(9);
+        if ($search = $request->input('search')) {
+            $cars = Car::query()
+        ->where('marque', 'LIKE', "%{$search}%")
+        ->orWhere('modele', 'LIKE', "%{$search}%")
+        ->orderBy('id', 'asc')->paginate(9);
+        } else {
+            //$voitures = Car::all();
+            $cars = Car::query()
+            ->orderBy('id', 'asc')->paginate(9);
+        }
         //
         return view('listCars', compact('cars'));
     }
@@ -67,7 +80,7 @@ class CarController extends Controller
             'prix' => 'required',
             'annee' => 'required',
             'km' => 'required',
-            'motor_id' => 'required',
+            'motor_type' => 'required',
         ]);
 
         $car = Car::create($validatedData);
@@ -128,7 +141,7 @@ class CarController extends Controller
             'prix' => 'required|max:11',
             'annee' => 'required',
             'km' => 'required',
-            'motor_id' => 'required',
+            'motor_type' => 'required',
         ]);
 
         Car::whereId($id)->update($validatedData);

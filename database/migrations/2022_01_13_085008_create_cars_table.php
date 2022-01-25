@@ -22,8 +22,8 @@ class CreateCarsTable extends Migration
             $table->integer('prix');
             $table->integer('annee');
             $table->integer('km');
-            $table->unsignedBigInteger('motor_id');
-            /*$table->foreign('motor_id')
+            $table->string('motor_type');
+            /*$table->foreign('motor_type')
                 ->references('id')
                 ->on('motorisations')
                 ->onDelete('cascade')

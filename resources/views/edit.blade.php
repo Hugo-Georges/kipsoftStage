@@ -38,6 +38,15 @@
             </div>
 
             <div class="form-group">
+                <label for="motor">Motorisation de la voiture :</label>
+                <select class="form-select" id="motor_type" name="motor_type">
+                    @foreach ($motors as $motor)
+                        <option value="{{ $motor->type }}">{{ $motor->type }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="description">Description de la voiture :</label>
                 <textarea class="form-control" rows="4" name="description">{{ $car->description }}</textarea>
             </div>
@@ -51,15 +60,6 @@
                 <label for="prix">Année de fabrication de la voiture  :</label>
                 <input type="number" class="form-control" name="annee" min="0" max="2022" value="{{ $car->annee }}"/>
             </div>
-
-            <div class="form-group">
-                <label for="motor">Motorisation de la voiture :</label>
-                <select class="form-select" id="motor_id" name="motor_id">
-                    @foreach ($motors as $motor)
-                        <option value="{{ $motor->id }}">{{ $motor->type }}</option>
-                    @endforeach
-            </div>
-            <br>
 
             <div class="form-group">
                 <label for="prix">Kilométrage de la voiture :</label>
