@@ -57,6 +57,14 @@ class MotorTableSeeder extends Seeder
 
             ],
 
+            [
+
+                'id' => 6,
+
+                'type' => 'non connu',
+
+            ],
+
         ]);
     }
 }

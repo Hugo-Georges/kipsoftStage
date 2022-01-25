@@ -19,7 +19,7 @@ class CarFactory extends Factory
         $prix = $this->faker->randomDigitNotNull();
         $annee = $this->faker->randomDigitNotNull();
         $km = $this->faker->randomDigitNotNull();
-        $motor_id= $this->faker->numberBetween($min = 1, $max = 5);
+        $motor_id= $this->faker->numberBetween($min = 1, $max = 6);
         return [
             'marque' => $marque,
             'modele' => $modele,
