@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('layout2')
 
-@section('content')
+@section('content2')
 
 <style>
   .uper {
@@ -38,6 +38,15 @@
             </div>
 
             <div class="form-group">
+                <label for="annee">Année de fabrication de la voiture  :</label>
+                <select class="form-control" name="annee">
+                    @for ($i = 1900; $i <= 2022; $i++) <!--boucle pour afficher toutes les années dans le select -->
+                        <option>{{ $i }}</option>
+                    @endfor
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="motor">Motorisation de la voiture :</label>
                 <select class="form-select" id="motor_type" name="motor_type">
                     @foreach ($motors as $motor)
@@ -54,11 +63,6 @@
             <div class="form-group">
                 <label for="cases">Prix :</label>
                 <input type="text" class="form-control" name="prix" value="{{ $car->prix }}"/>
-            </div>
-
-            <div class="form-group">
-                <label for="prix">Année de fabrication de la voiture  :</label>
-                <input type="number" class="form-control" name="annee" min="0" max="2022" value="{{ $car->annee }}"/>
             </div>
 
             <div class="form-group">

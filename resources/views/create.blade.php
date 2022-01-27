@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('layout2')
 
-@section('content')
+@section('content2')
 <style>
   .uper {
     margin-top: 40px;
@@ -36,6 +36,15 @@
             </div>
 
             <div class="form-group">
+                <label for="annee">Année de fabrication de la voiture  :</label>
+                <select class="form-control" name="annee">
+                    @for ($i = 1900; $i <= 2022; $i++) <!--boucle pour afficher toutes les années dans le select -->
+                        <option>{{ $i }}</option>
+                    @endfor
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="motor_type">Motorisation de la voiture :</label>
                 <select class="form-control" id="motor_type" name="motor_type">
                     @foreach ($motors as $motor)
@@ -46,7 +55,6 @@
 
             <div class="form-group">
                 <label for="description">Description de la voiture :</label>
-                <!--<input type="text" class="form-control" name="description"/>-->
                 <textarea class="form-control" rows="4" name="description"></textarea>
             </div>
 
@@ -56,17 +64,14 @@
             </div>
 
             <div class="form-group">
-                <label for="annee">Année de fabrication de la voiture  :</label>
-                <input type="number" class="form-control" name="annee" min="1884" max="2022"/>
-            </div>
-
-            <div class="form-group">
                 <label for="km">Kilométrage de la voiture :</label>
                 <input type="number" class="form-control" name="km" min="0"/>
             </div>
 
+            <br>
 
             <button type="submit" class="btn btn-outline-success">Ajouter</button>
+
             <div class="d-md-flex justify-content-md-end">
                 <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
             </div>

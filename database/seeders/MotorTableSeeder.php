@@ -37,7 +37,7 @@ class MotorTableSeeder extends Seeder
 
                 'id' => 3,
 
-                'type' => 'electric',
+                'type' => 'électirque',
 
             ],
 

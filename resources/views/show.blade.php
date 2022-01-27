@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('layout2')
 
-@section('content')
+@section('content2')
 <style>
     .uper {
       margin-top: 40px;
@@ -42,6 +42,6 @@
     <a href="{{ route('cars.comments.create', $car->id)}}" class="btn btn-outline-success">Ajouter</a>
 </div>
 <div class="d-md-flex justify-content-md-end">
-    <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+    <a href="{{ route('index') }}" class="btn btn-outline-primary" role="button">Retour</a>
 </div>
 @endsection
