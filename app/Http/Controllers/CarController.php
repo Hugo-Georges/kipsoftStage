@@ -25,12 +25,12 @@ class CarController extends Controller
         ->orderBy('id','asc')->paginate(10);
         }
         else{
-            //$voitures = Car::all();
             $cars = Car::query()
             ->orderBy('id','asc')->paginate(10);
         }
         //
         return view('index', compact('cars'));
+
     }
 
     /**
@@ -46,7 +46,6 @@ class CarController extends Controller
         ->orWhere('modele', 'LIKE', "%{$search}%")
         ->orderBy('id', 'asc')->paginate(9);
         } else {
-            //$voitures = Car::all();
             $cars = Car::query()
             ->orderBy('id', 'asc')->paginate(9);
         }

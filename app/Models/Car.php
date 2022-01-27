@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Car extends Model
 {
@@ -18,6 +19,12 @@ class Car extends Model
     public function motorisation()
     {
         return $this->belongsTo(Motorisation::class);
+    }
+
+    public function listYearCar()
+    {
+        $currentDate = Carbon::now();
+        echo $currentDate->format('Y');
     }
 }
 
