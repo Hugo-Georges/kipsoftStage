@@ -56,6 +56,5 @@
     <ul class="pagination justify-content-center mb-4">
         {{$cars->links("pagination::bootstrap-4")}}
     </ul>
-    <p>{{ $current }}</p>
 </div>
 @endsection

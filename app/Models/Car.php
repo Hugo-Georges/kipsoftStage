@@ -21,10 +21,18 @@ class Car extends Model
         return $this->belongsTo(Motorisation::class);
     }
 
-    public function listYearCar()
+    public function currentYear()
     {
-        $currentDate = Carbon::now();
-        echo $currentDate->format('Y');
+        $currentYear = Carbon::now()->format('Y');
+        return $currentYear;
     }
+
+    public function year()
+    {
+        $year = 2000;
+        return $year;
+    }
+
+
 }
 

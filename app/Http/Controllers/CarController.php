@@ -7,7 +7,6 @@ use App\Models\Car;
 use App\Models\Comment;
 use App\Models\Motorisation;
 use Illuminate\Support\Facades\Schema;
-
 class CarController extends Controller
 {
     /**
@@ -45,7 +44,8 @@ class CarController extends Controller
         ->where('marque', 'LIKE', "%{$search}%")
         ->orWhere('modele', 'LIKE', "%{$search}%")
         ->orderBy('id', 'asc')->paginate(9);
-        } else {
+        }
+        else {
             $cars = Car::query()
             ->orderBy('id', 'asc')->paginate(9);
         }
@@ -61,7 +61,9 @@ class CarController extends Controller
     public function create()
     {
         $motors = Motorisation::all();
-    return view('create', compact('motors'));
+        $finalYear = Car::currentYear();
+        $beginYear = Car::year();
+        return view('create', compact('motors', 'finalYear', 'beginYear'));
     }
 
     /**
@@ -87,31 +89,7 @@ class CarController extends Controller
         return redirect('/cars')->with('success', 'Voiture créer avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $car = Car::findOrFail($id);
-        $comments = $car->comments()->get();
-
-
-        return view('show', compact('car', 'comments'));
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
-
-
-    /**
+/**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -121,7 +99,9 @@ class CarController extends Controller
     {
         $car = Car::findOrFail($id);
         $motors = Motorisation::all();
-        return view('edit', compact('car','motors'));
+        $finalYear = Car::currentYear();
+        $beginYear = Car::year();
+        return view('edit', compact('car','motors', 'finalYear', 'beginYear'));
     }
 
     /**
@@ -149,6 +129,21 @@ class CarController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $car = Car::findOrFail($id);
+        $comments = $car->comments()->get();
+
+
+        return view('show', compact('car', 'comments'));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *@param  \Illuminate\Database\Schema
      * @param  int  $id
@@ -161,5 +156,7 @@ class CarController extends Controller
 
         return redirect('/cars')->with('success', 'Voiture supprimer avec succèss');
     }
+
+
 
 }

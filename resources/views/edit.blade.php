@@ -40,9 +40,10 @@
             <div class="form-group">
                 <label for="annee">Année de fabrication de la voiture  :</label>
                 <select class="form-control" name="annee">
-                    @for ($i = 1900; $i <= 2022; $i++) <!--boucle pour afficher toutes les années dans le select -->
-                        <option>{{ $i }}</option>
-                    @endfor
+                    <option>{{ $beginYear }}</option>
+                    @while ($beginYear != $finalYear)
+                        <option>{{ $beginYear += 1 }}</option>
+                    @endwhile <!--boucle pour afficher toutes les années dans le select -->
                 </select>
             </div>
 
