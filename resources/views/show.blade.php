@@ -1,6 +1,6 @@
-@extends('layout2')
+@extends('layout')
 
-@section('content2')
+@section('content')
 <style>
     .uper {
       margin-top: 40px;
@@ -23,7 +23,7 @@
         <br>
         <h5 class="card-title">Commentaires : </h5>
         @if (!$comments->isNotEmpty())
-            <p>Soyez la première personne à mettre un commentaire pour cette voiture</p>
+            <p class="text-center">Soyez la première personne à mettre un commentaire pour cette voiture</p>
         @else
         @foreach ($comments as $comment)
             <p>{{ $comment->contenu }}</p>

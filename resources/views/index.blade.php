@@ -1,7 +1,7 @@
 
-@extends('layout2')
+@extends('layout')
 
-@section('content2')
+@section('content')
     <style>
         .uper
         {
