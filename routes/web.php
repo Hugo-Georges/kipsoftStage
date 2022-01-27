@@ -28,4 +28,4 @@ Route::get('/', function () {
 Route::get('index', [CarController::class, 'index'])->name('index');
 Route::get('listCars', [CarController::class, 'listCars'])->name('listCars');
 
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

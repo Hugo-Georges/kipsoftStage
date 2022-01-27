@@ -9,6 +9,17 @@ use App\Models\Motorisation;
 use Illuminate\Support\Facades\Schema;
 class CarController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
