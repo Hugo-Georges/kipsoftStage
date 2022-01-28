@@ -48,6 +48,7 @@ class CarController extends Controller
      * Display a listing of the resource.
      * @return \Illuminate\Http\Response
      * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function listCars(Request $request)
     {

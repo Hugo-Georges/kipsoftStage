@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout2')
 
 @section('content')
     <main>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <br>
-            <div class="d-md-flex justify-content-md-end">
+            <div class="d-md-flex justify-content">
             <a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
             </div>
             <div class="d-md-flex justify-content-md-end">
