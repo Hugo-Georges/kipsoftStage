@@ -55,7 +55,7 @@
             <a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
             </div>
             <div class="d-md-flex justify-content-md-end">
-                <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+                <a href="{{ route('listCars') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
             </div>
             <ul class="pagination justify-content-center mb-4">
                 {{$cars->links("pagination::bootstrap-4")}}
