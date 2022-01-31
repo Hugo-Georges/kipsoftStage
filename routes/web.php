@@ -50,10 +50,14 @@ Route::get('send-mail', function () {
 
 
 
-    \Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\MyTestMail($details));
+    Mail::to('lafuente.hg@outlook.fr')->send(new \App\Mail\MyTestMail($details));
 
 
 
     dd("Email is Sent.");
 
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

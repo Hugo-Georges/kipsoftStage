@@ -1,12 +1,23 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
- <title>Laravel 8 Send Email Example</title>
+
+    <title>ItsolutionStuff.com</title>
+
 </head>
+
 <body>
 
- <h1>This is test mail from Tutsmake.com</h1>
- <p>Laravel 8 send email example</p>
+    <h1>{{ $details['title'] }}</h1>
+
+    <p>{{ $details['body'] }}</p>
+
+
+
+    <p>Thank you</p>
 
 </body>
+
 </html>
