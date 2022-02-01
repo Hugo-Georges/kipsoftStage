@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Motorisation;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -21,7 +22,8 @@ class CommentController extends Controller
      */
     public function create($car_id)
     {
-        return view('commentCreate', compact('car_id'));
+        $motors = Motorisation::all();
+        return view('commentCreate', compact('car_id', 'motors'));
     }
 
     /**

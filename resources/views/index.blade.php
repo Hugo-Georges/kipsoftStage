@@ -1,5 +1,5 @@
 
-@extends('layout')
+@extends('layout', ['motors' => $motors])
 
 @section('content')
     <style>

@@ -6,8 +6,8 @@
       margin-top: 40px;
     }
   </style>
-
-<div class="card uper bg-light text-dark" style="width: 80rem;">
+<div class="container">
+<div class="card uper bg-light text-dark">
     <div class="card-header">
         Informations sur la voiture
     </div>
@@ -43,5 +43,6 @@
 </div>
 <div class="d-md-flex justify-content-md-end">
     <a href="{{ route('index') }}" class="btn btn-outline-primary" role="button">Retour</a>
+</div>
 </div>
 @endsection

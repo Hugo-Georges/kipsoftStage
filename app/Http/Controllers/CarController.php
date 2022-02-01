@@ -28,19 +28,19 @@ class CarController extends Controller
      */
     public function index(Request $request)
     {
-
-        if ($search = $request->input('search')){
+        $motors = Motorisation::all();
+        if ($search = $request->input('search') && $search2 = $request->input('search2')) {
             $cars = Car::query()
-        ->where('marque', 'LIKE', "%{$search}%")
-        ->orWhere('modele', 'LIKE', "%{$search}%")
-        ->orderBy('id','asc')->paginate(10);
+            ->where('marque', 'LIKE', "%{$search}%", 'OR', 'modele', 'LIKE', "%{$search}%")
+            ->Where('motor_type' ,'LIKE', "{$search2}")
+            ->orderBy('id','asc')->paginate(10);
         }
         else{
             $cars = Car::query()
             ->orderBy('id','asc')->paginate(10);
         }
         //
-        return view('index', compact('cars'));
+        return view('index', compact('cars', 'motors'));
 
     }
 
@@ -52,18 +52,20 @@ class CarController extends Controller
      */
     public function listCars(Request $request)
     {
-        if ($search = $request->input('search')) {
+        $motors = Motorisation::all();
+        if ($search = $request->input('search') && $search2 = $request->input('search2')) {
             $cars = Car::query()
-        ->where('marque', 'LIKE', "%{$search}%")
-        ->orWhere('modele', 'LIKE', "%{$search}%")
-        ->orderBy('id', 'asc')->paginate(9);
+            ->where('marque', 'LIKE', "%{$search}%")
+            ->orWhere('modele', 'LIKE', "%{$search}%")
+            ->orWhere('motor_type' ,'LIKE', "{$search2}")
+            ->orderBy('id', 'asc')->paginate(9);
         }
         else {
             $cars = Car::query()
             ->orderBy('id', 'asc')->paginate(9);
         }
         //
-        return view('listCars', compact('cars'));
+        return view('listCars', compact('cars','motors'));
     }
 
     /**
@@ -126,6 +128,7 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $motors = Motorisation::all();
         $validatedData = $request->validate([
             'marque' => 'required|max:255',
             'modele' => 'required|max:255',
@@ -138,7 +141,7 @@ class CarController extends Controller
 
         Car::whereId($id)->update($validatedData);
 
-        return redirect('/cars')->with('success', 'Voiture mise à jour avec succèss');
+        return redirect('/listCars')->with('success', 'Voiture mise à jour avec succèss');
     }
 
     /**
@@ -149,11 +152,12 @@ class CarController extends Controller
      */
     public function show($id)
     {
+        $motors = Motorisation::all();
         $car = Car::findOrFail($id);
         $comments = $car->comments()->get();
 
 
-        return view('show', compact('car', 'comments'));
+        return view('show', compact('car', 'comments', 'motors'));
     }
 
     /**
@@ -166,10 +170,7 @@ class CarController extends Controller
     {
         $car = Car::findOrFail($id);
         $car->delete();
-
-        return redirect('/cars')->with('success', 'Voiture supprimer avec succèss');
+        return redirect('/listCars')->with('success', 'Voiture supprimer avec succèss');
     }
-
-
 
 }

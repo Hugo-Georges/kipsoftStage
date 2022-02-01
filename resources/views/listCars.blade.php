@@ -1,4 +1,4 @@
-@extends('layout2')
+@extends('layout2', ['motors' => $motors])
 
 @section('content')
     <main>
@@ -30,13 +30,13 @@
                                 </ul>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                      <a href="{{ route('cars.show', $car->id)}}" class="btn btn-outline-info">Détail</a>
-                                      <a href="{{ route('cars.edit', $car->id)}}" class="btn btn-outline-secondary">Modifier</a><!--Pour modifier une voiture-->
-                                      <form action="{{ route('cars.destroy', $car->id)}}" method="post"><!--Pour supprimer une voiture-->
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-outline-danger" type="submit">Supprimer</button>
-                                </form>
+                                        <a href="{{ route('cars.show', $car->id)}}" class="btn btn-outline-info">Détail</a>
+                                        <a href="{{ route('cars.edit', $car->id)}}" class="btn btn-outline-secondary">Modifier</a><!--Pour modifier une voiture-->
+                                        <form action="{{ route('cars.destroy', $car->id)}}" method="post"><!--Pour supprimer une voiture-->
+                                            @csrf
+                                            @method('DELETE')
+                                            <button  type="submit" class="btn btn-outline-danger">Supprimer</button>
+                                        </form>
                                     </div>
                                     <small class="text-muted">9 mins</small>
                                   </div>
