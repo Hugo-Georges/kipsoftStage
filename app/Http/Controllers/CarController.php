@@ -55,11 +55,22 @@ class CarController extends Controller
         $motors = Motorisation::all();
         if ($search = $request->input('search') && $search2 = $request->input('search2')) {
             $cars = Car::query()
-            ->where('marque', 'LIKE', "%{$search}%")
-            ->orWhere('modele', 'LIKE', "%{$search}%")
-            ->orWhere('motor_type' ,'LIKE', "{$search2}")
+            ->where(function($req) use ($search){
+                $req->where('marque', 'LIKE', "%{$search}%")
+                    ->orWhere('modele', 'LIKE', "%{$search}%");
+            })
+            ->where('motor_type' ,'LIKE', "{$search2}")
             ->orderBy('id', 'asc')->paginate(9);
         }
+        /*if ($search = $request->input('search') && $search2 = $request->input('search2')) {
+            $cars = Car::query()
+            ->where(
+                'marque', 'LIKE', "%{$search}%"
+            )
+            ->orWhere('modele', 'LIKE', "%{$search}%")
+            ->where('motor_type' ,'LIKE', "{$search2}")
+            ->orderBy('id', 'asc')->paginate(9);
+        }*/
         else {
             $cars = Car::query()
             ->orderBy('id', 'asc')->paginate(9);
