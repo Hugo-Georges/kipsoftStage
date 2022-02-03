@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Car;
 
 class CommentFactory extends Factory
 {
@@ -14,7 +15,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         $contenu = $this->faker->word();
-        $car_id ="";
+        $car_id = Car::inRandomOrder()->first()->id;
         return [
             'contenu' => $contenu,
             'car_id' => $car_id,

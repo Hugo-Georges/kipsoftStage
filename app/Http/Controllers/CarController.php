@@ -32,7 +32,7 @@ class CarController extends Controller
         if ($search = $request->input('search') && $search2 = $request->input('search2')) {
             $cars = Car::query()
             ->where('marque', 'LIKE', "%{$search}%", 'OR', 'modele', 'LIKE', "%{$search}%")
-            ->Where('motor_type' ,'LIKE', "{$search2}")
+            ->Where('motor_id' ,'LIKE', "{$search2}")
             ->orderBy('id','asc')->paginate(10);
         }
         else{
@@ -53,29 +53,26 @@ class CarController extends Controller
     public function listCars(Request $request)
     {
         $motors = Motorisation::all();
-        if ($search = $request->input('search') && $search2 = $request->input('search2')) {
+        if ($search = $request->input('search') && $search2 = $request->get('search2')) {
             $cars = Car::query()
-            ->where(function($req) use ($search){
-                $req->where('marque', 'LIKE', "%{$search}%")
+
+            ->where(function ($query2) use ($search){
+                $query2->where('marque', 'LIKE', "%{$search}%")
                     ->orWhere('modele', 'LIKE', "%{$search}%");
             })
-            ->where('motor_type' ,'LIKE', "{$search2}")
+            ->where('motor_id', '=', function ($query) use ($search2) {
+                $query->select('type')
+                    ->from('motorisations')
+                    ->where('type', '=', "{$search2}")
+                    ;
+            })
             ->orderBy('id', 'asc')->paginate(9);
         }
-        /*if ($search = $request->input('search') && $search2 = $request->input('search2')) {
-            $cars = Car::query()
-            ->where(
-                'marque', 'LIKE', "%{$search}%"
-            )
-            ->orWhere('modele', 'LIKE', "%{$search}%")
-            ->where('motor_type' ,'LIKE', "{$search2}")
-            ->orderBy('id', 'asc')->paginate(9);
-        }*/
         else {
             $cars = Car::query()
             ->orderBy('id', 'asc')->paginate(9);
+
         }
-        //
         return view('listCars', compact('cars','motors'));
     }
 
@@ -107,7 +104,7 @@ class CarController extends Controller
             'prix' => 'required',
             'annee' => 'required',
             'km' => 'required',
-            'motor_type' => 'required',
+            'motor_id' => 'required',
         ]);
 
         $car = Car::create($validatedData);
@@ -147,7 +144,7 @@ class CarController extends Controller
             'prix' => 'required|max:11',
             'annee' => 'required',
             'km' => 'required',
-            'motor_type' => 'required',
+            'motor_id' => 'required',
         ]);
 
         Car::whereId($id)->update($validatedData);

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Comment;
 use App\Models\Motorisation;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CarFactory extends Factory
@@ -21,7 +22,9 @@ class CarFactory extends Factory
         $prix = $this->faker->randomDigitNotNull();
         $annee = $this->faker->randomDigitNotNull();
         $km = $this->faker->randomDigitNotNull();;
-        $motor_type = Motorisation::inRandomOrder()->first()->type;
+        //$motor_id = Motorisation::inRandomOrder()->first()->type;
+        $motor_id = Motorisation::inRandomOrder()->first()->id;
+        $user_id = User::inRandomOrder()->first()->id;
 
         return [
             'marque' => $marque,
@@ -30,7 +33,8 @@ class CarFactory extends Factory
             'prix' => $prix,
             'annee' => $annee,
             'km' => $km,
-            'motor_type' => $motor_type,
+            'motor_id' => $motor_id,
+            'user_id' => $user_id,
         ];
     }
 }

@@ -33,7 +33,7 @@
                     <td>{{$car->prix}}</td>
                         <td>{{ $car->annee }}</td>
                     <td>{{ $car->km }}</td>
-                    <td>{{ $car->motor_type }}
+                    <td>{{ $car->motor_id }}
                     <td><a href="{{ route('cars.show', $car->id)}}" class="btn btn-outline-info">Détail</a></td><!--Pour voir plus d'informations sur une voiture-->
                     <td><a href="{{ route('cars.edit', $car->id)}}" class="btn btn-outline-secondary">Modifier</a></td><!--Pour modifier une voiture-->
                     <td>

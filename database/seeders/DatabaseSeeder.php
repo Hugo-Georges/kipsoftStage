@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Car;
 use App\Models\Comment;
 use App\Models\Motorisation;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -58,6 +59,10 @@ class DatabaseSeeder extends Seeder
         Car::factory()
         ->has(Comment::factory()->count(4))
         ->count(20)
+        ->create();
+
+        User::factory()
+        ->count(2)
         ->create();
 
 

@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <label for="motor">Motorisation de la voiture :</label>
-                <select class="form-select" id="motor_type" name="motor_type">
+                <select class="form-select" id="motor_id" name="motor_id">
                     @foreach ($motors as $motor)
                         <option value="{{ $motor->type }}">{{ $motor->type }}</option>
                     @endforeach
