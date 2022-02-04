@@ -21,42 +21,20 @@ Route::resource('cars', 'CarController');
 
 Route::resource('cars.comments', 'CommentController');
 
-//Route::ressource('motors.cars', 'CarController');
-
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Route::get('/cars/preview', [CarController::class, 'preview']);
 Route::get('index', [CarController::class, 'index'])->name('index');
-Route::get('listCars', [CarController::class, 'listCars'])->name('listCars');
+Route::get('preview', [CarController::class, 'preview'])->name('preview');
+Route::get('myCars', [CarController::class, 'myCars'])->name('myCars');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('send-mail', function () {
-
-
-
-    $details = [
-
-        'title' => 'Mail from ItSolutionStuff.com',
-
-        'body' => 'This is for testing email using smtp'
-
-    ];
-
-
-
-    Mail::to('lafuente.hg@outlook.fr')->send(new \App\Mail\MyTestMail($details));
-
-
-
-    dd("Email is Sent.");
-
-});
 
 Auth::routes();
 

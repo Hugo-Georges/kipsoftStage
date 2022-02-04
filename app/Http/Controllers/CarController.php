@@ -41,7 +41,7 @@ class CarController extends Controller
             ->orderBy('id','asc')->paginate(10);
         }
         //
-        return view('index', compact('cars', 'motors'));
+        return view('car.index', compact('cars', 'motors'));
 
     }
 
@@ -51,7 +51,7 @@ class CarController extends Controller
      * @return \Illuminate\Database\Eloquent\Builder
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function listCars(Request $request)
+    public function preview(Request $request)
     {
         $motors = Motorisation::all();
         if ($search = $request->input('search') && $search2 = $request->get('search2')) {
@@ -74,7 +74,25 @@ class CarController extends Controller
             ->orderBy('id', 'asc')->paginate(9);
 
         }
-        return view('listCars', compact('cars','motors'));
+        return view('car.preview', compact('cars','motors'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function myCars()
+    {
+        $user = Car::get_current_user();
+        $motors = Motorisation::all();
+        $cars = Car::query()
+        ->where('user_id', '=', "{$user}" )
+        ->orderBy('id','asc')->paginate(10);
+        //
+        return view('myCars', compact('cars', 'motors', 'user'));
+
     }
 
     /**
@@ -88,7 +106,7 @@ class CarController extends Controller
         $users = User::all();
         $finalYear = Car::currentYear();
         $startYear = Car::year();
-        return view('create', compact('motors', 'finalYear', 'startYear'));
+        return view('car.create', compact('motors', 'finalYear', 'startYear'));
     }
 
     /**
@@ -126,7 +144,7 @@ class CarController extends Controller
         $motors = Motorisation::all();
         $finalYear = Car::currentYear();
         $startYear = Car::year();
-        return view('edit', compact('car','motors', 'finalYear', 'startYear'));
+        return view('car.edit', compact('car','motors', 'finalYear', 'startYear'));
     }
 
     /**
@@ -151,7 +169,7 @@ class CarController extends Controller
 
         Car::whereId($id)->update($validatedData);
 
-        return redirect('/listCars')->with('success', 'Voiture mise à jour avec succèss');
+        return redirect('/preview')->with('success', 'Voiture mise à jour avec succèss');
     }
 
     /**
@@ -167,7 +185,7 @@ class CarController extends Controller
         $comments = $car->comments()->get();
 
 
-        return view('show', compact('car', 'comments', 'motors'));
+        return view('car.show', compact('car', 'comments', 'motors'));
     }
 
     /**
@@ -180,7 +198,7 @@ class CarController extends Controller
     {
         $car = Car::findOrFail($id);
         $car->delete();
-        return redirect('/listCars')->with('success', 'Voiture supprimer avec succèss');
+        return redirect('/preview')->with('success', 'Voiture supprimer avec succèss');
     }
 
 }

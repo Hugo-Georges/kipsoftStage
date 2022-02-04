@@ -1,4 +1,4 @@
-@extends('layout2', ['motors' => $motors])
+@extends('layouts.layout2', ['motors' => $motors])
 
 @section('content')
     <main>
@@ -6,7 +6,7 @@
           <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
               <h1 class="fw-light">Bienvenue</h1>
-              <p class="lead text-muted">Ici vous pouvez vendre vos voitures ou acheter de nouvelles</p>
+              <p class="lead text-muted">Ici vous pouvez vendre vos voitures ou en acheter de nouvelles</p>
             </div>
           </div>
         </section>
@@ -55,11 +55,12 @@
             <a href="{{ route('cars.create')}}" class="btn btn-outline-success">Ajouter</a>
             </div>
             <div class="d-md-flex justify-content-md-end">
-                <a href="{{ route('listCars') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+                <a href="{{ route('preview') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
             </div>
             <ul class="pagination justify-content-center mb-4">
                 {{$cars->links("pagination::bootstrap-4")}}
             </ul>
         </div>
     </main>
+    <p>{{ $user }}</p>
 @endsection
