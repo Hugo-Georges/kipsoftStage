@@ -27,22 +27,9 @@ class CarController extends Controller
      * @return \Illuminate\Database\Eloquent\Builder
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function dashboard(Request $request)
     {
-        $motors = Motorisation::all();
-        if ($search = $request->input('search') && $search2 = $request->input('search2')) {
-            $cars = Car::query()
-            ->where('marque', 'LIKE', "%{$search}%", 'OR', 'modele', 'LIKE', "%{$search}%")
-            ->Where('motor_id' ,'LIKE', "{$search2}")
-            ->orderBy('id','asc')->paginate(10);
-        }
-        else{
-            $cars = Car::query()
-            ->orderBy('id','asc')->paginate(10);
-        }
-        //
-        return view('car.index', compact('cars', 'motors'));
-
+        return $this->searchCarWithFormSearch($request);
     }
 
     /**
@@ -53,28 +40,7 @@ class CarController extends Controller
      */
     public function preview(Request $request)
     {
-        $motors = Motorisation::all();
-        if ($search = $request->input('search') && $search2 = $request->get('search2')) {
-            $cars = Car::query()
-
-            ->where(function ($query2) use ($search){
-                $query2->where('marque', 'LIKE', "%{$search}%")
-                    ->orWhere('modele', 'LIKE', "%{$search}%");
-            })
-            ->where('motor_id', '=', function ($query) use ($search2) {
-                $query->select('type')
-                    ->from('motorisations')
-                    ->where('type', '=', "{$search2}")
-                    ;
-            })
-            ->orderBy('id', 'asc')->paginate(9);
-        }
-        else {
-            $cars = Car::query()
-            ->orderBy('id', 'asc')->paginate(9);
-
-        }
-        return view('car.preview', compact('cars','motors'));
+        return CarController::searchCarWithFormSearch($request, 'preview', 9);
     }
 
     /**
@@ -88,10 +54,10 @@ class CarController extends Controller
         $user = Car::get_current_user();
         $motors = Motorisation::all();
         $cars = Car::query()
-        ->where('user_id', '=', "{$user}" )
+        ->where('user_id', '=', $user)
         ->orderBy('id','asc')->paginate(10);
         //
-        return view('myCars', compact('cars', 'motors', 'user'));
+        return view('car.myCars', compact('cars', 'motors', 'user'));
 
     }
 
@@ -103,10 +69,10 @@ class CarController extends Controller
     public function create()
     {
         $motors = Motorisation::all();
-        $users = User::all();
         $finalYear = Car::currentYear();
         $startYear = Car::year();
-        return view('car.create', compact('motors', 'finalYear', 'startYear'));
+        $user = Car::get_current_user();
+        return view('car.create', compact('motors', 'finalYear', 'startYear', 'user'));
     }
 
     /**
@@ -199,6 +165,16 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         $car->delete();
         return redirect('/preview')->with('success', 'Voiture supprimer avec succèss');
+    }
+
+
+    static function searchCarWithFormSearch($request, $view = 'dashboard', $paginate = 10) {
+        $motors = Motorisation::all();
+        $search = $request->input('search');
+        $search2 = $request->get('search2');
+        $cars = Car::search($search, $search2, $paginate);
+
+        return view('car.'.$view, compact('cars','motors', 'search', 'search2'));
     }
 
 }

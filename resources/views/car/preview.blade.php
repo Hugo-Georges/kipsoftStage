@@ -1,4 +1,4 @@
-@extends('layouts.layout2', ['motors' => $motors])
+@extends('layouts.car', ['motors' => $motors])
 
 @section('content')
     <main>
