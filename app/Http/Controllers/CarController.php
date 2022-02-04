@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Comment;
 use App\Models\Motorisation;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 class CarController extends Controller
 {
@@ -84,6 +85,7 @@ class CarController extends Controller
     public function create()
     {
         $motors = Motorisation::all();
+        $users = User::all();
         $finalYear = Car::currentYear();
         $startYear = Car::year();
         return view('create', compact('motors', 'finalYear', 'startYear'));

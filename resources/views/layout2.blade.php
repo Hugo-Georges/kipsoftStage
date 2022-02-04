@@ -80,6 +80,18 @@
                                         Voitures
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{ route('listCars') }}">
+                                        <span data-feather="file"></span>
+                                        Mes voitures
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{ route('listCars') }}">
+                                        <span data-feather="file"></span>
+                                        Favoris
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </nav>

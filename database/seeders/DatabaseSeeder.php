@@ -18,6 +18,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $role = DB::table('roles')->insert([
+
+            [
+                'id' => 1,
+                'libRole' => 'superAdmin'
+            ],
+
+            [
+                'id' => 2,
+                'libRole' => 'admin'
+            ],
+
+            [
+                'id' => 3,
+                'libRole' => 'user'
+            ],
+
+        ]);
 
         $motor = DB::table('motorisations')->insert([
 
@@ -32,11 +50,8 @@ class DatabaseSeeder extends Seeder
             ],
 
             [
-
                 'id' => 3,
-
                 'type' => 'électrique',
-
             ],
 
             [
@@ -55,15 +70,16 @@ class DatabaseSeeder extends Seeder
             ],
 
         ]);
+        User::factory()
+        ->count(3)
+        ->create();
 
         Car::factory()
         ->has(Comment::factory()->count(4))
         ->count(20)
         ->create();
 
-        User::factory()
-        ->count(2)
-        ->create();
+
 
 
     }
