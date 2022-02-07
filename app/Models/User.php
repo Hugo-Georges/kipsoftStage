@@ -52,4 +52,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function search($match)
+    {
+        $query = User::query();
+
+        if(!empty($match)) {
+            $query = $query->where(function ($query2) use ($match) {
+                $query2->where('name', 'LIKE', "%{$match}%")
+                    ->orWhere('email', 'LIKE', "%{$match}%");
+            });
+        }
+        return $query->orderBy('id', 'asc')->paginate(10);
+    }
 }

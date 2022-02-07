@@ -51,7 +51,7 @@ class CarController extends Controller
      */
     public function myCars()
     {
-        $user = Car::get_current_user();
+        $user = 3;
         $motors = Motorisation::all();
         $cars = Car::query()
         ->where('user_id', '=', $user)
@@ -91,6 +91,7 @@ class CarController extends Controller
             'annee' => 'required',
             'km' => 'required',
             'motor_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         $car = Car::create($validatedData);
@@ -122,7 +123,6 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $motors = Motorisation::all();
         $validatedData = $request->validate([
             'marque' => 'required|max:255',
             'modele' => 'required|max:255',
@@ -131,6 +131,7 @@ class CarController extends Controller
             'annee' => 'required',
             'km' => 'required',
             'motor_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         Car::whereId($id)->update($validatedData);
@@ -150,7 +151,6 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         $comments = $car->comments()->get();
 
-
         return view('car.show', compact('car', 'comments', 'motors'));
     }
 
@@ -164,6 +164,7 @@ class CarController extends Controller
     {
         $car = Car::findOrFail($id);
         $car->delete();
+
         return redirect('/preview')->with('success', 'Voiture supprimer avec succèss');
     }
 

@@ -71,10 +71,14 @@
                 <input type="number" class="form-control" name="km" min="0" value="{{ $car->km }}"/>
             </div>
 
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="user_id" min="0" value="{{ $car->user_id }}"/>
+            </div>
+
             <br>
             <button type="submit" class="btn btn-outline-secondary">Modifier</button>
             <div class="d-md-flex justify-content-md-end">
-                <a href="{{ route('index') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
+                <a href="{{ route('preview') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
             </div>
       </form>
   </div>

@@ -28,14 +28,9 @@
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <form class="col-sm" action="{{ route('preview') }}">
+                <form class="col-sm" action="{{ route('index') }}">
                     <div class="input-group">
-                        <input class="input-group-text form-control-dark w-50" type="text" placeholder="Rechercher une voiture par marque et/ou modèle" name ="search" id="search" action="{{ route('index') }}">
-                        <select class="form-select w-25" id="search2" name="search2">
-                            @foreach ($motors as $motor)
-                                <option value="{{ $motor->type }}">{{ $motor->type }}</option>
-                            @endforeach
-                        </select>
+                        <input class="input-group-text form-control-dark col-11" type="text" placeholder="Rechercher un utilisateur par nom ou par email" name ="search" id="search" action="{{ route('index') }}">
                         <button class="btn btn-outline-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -59,45 +54,50 @@
             </header>
             <div class="container">
                 <div class="row">
-                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                        <div class="position-sticky pt-3">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('index') }}">
-                                        <span data-feather="home"></span>
-                                        Dashboard
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('index') }}">
-                                        <span data-feather="home"></span>
-                                        Dashboard
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('preview') }}">
-                                        <span data-feather="file"></span>
-                                        Voitures
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('myCars') }}">
-                                        <span data-feather="file"></span>
-                                        Mes voitures
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="{{ route('preview') }}">
-                                        <span data-feather="file"></span>
-                                        Favoris
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 uper">
-                        @yield('content')
-                    </main>
+                  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3">
+                      <ul class="nav flex-column">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="{{ route('cars.index') }}">
+                            <span data-feather="home"></span>
+                            Dashboard
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">
+                              <span data-feather="home"></span>
+                              Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('user.index') }}">
+                              <span data-feather="home"></span>
+                              Utilisateurs
+                            </a>
+                          </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="{{ route('preview') }}">
+                            <span data-feather="file"></span>
+                            Voitures
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('myCars') }}">
+                                <span data-feather="file"></span>
+                                Mes voitures
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('preview') }}">
+                                <span data-feather="file"></span>
+                                Favoris
+                            </a>
+                        </li>
+                    </div>
+                  </nav>
+                  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 uper">
+                    @yield('content')
+                  </main>
                 </div>
             </div>
             <script src="{{ asset('js/app.js') }}" type="text/js"></script>

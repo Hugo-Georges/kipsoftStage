@@ -31,7 +31,7 @@
                 <form class="col-sm" action="">
                     <div class="input-group">
                         <input class="input-group-text form-control-dark col-8" type="text" placeholder="Rechercher une voiture par marque et/ou modèle" value="{{ $search }}" name ="search" id="search" action="{{ route('index') }}">
-                        <select class="form-select w-25" id="search2" name="search2">
+                        <select class="form-select " id="search2" name="search2">
                             @foreach ($motors as $motor)
                                 <option selected="{{ $search2 == $motor->id }}" value="{{ $motor->id }}">{{ $motor->type }}</option>
                             @endforeach

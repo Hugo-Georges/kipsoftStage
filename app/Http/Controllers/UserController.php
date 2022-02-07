@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
+     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        return view('user.index', compact('users'));
+        return $this->searchUserWithFormSearch($request);
     }
 
     /**
@@ -86,5 +86,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    static function searchUserWithFormSearch($request) {
+        $search = $request->input('search');
+        $users = User::search($search);
+
+        return view('user.index', compact('users', 'search'));
     }
 }
