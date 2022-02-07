@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
 |
 */
 Route::resource('cars', 'CarController');
-Route::resource('user', 'UserController');
+Route::resource('users', 'UserController');
 
 Route::resource('cars.comments', 'CommentController');
 
@@ -32,12 +32,8 @@ Route::get('/', function () {
 Route::get('dashboard', [CarController::class, 'dashboard'])->name('dashboard');
 Route::get('preview', [CarController::class, 'preview'])->name('preview');
 Route::get('myCars', [CarController::class, 'myCars'])->name('myCars');
-Route::get('users', [UserController::class, 'index'])->name('index');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('users', [UserController::class, 'index'])->name('index');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

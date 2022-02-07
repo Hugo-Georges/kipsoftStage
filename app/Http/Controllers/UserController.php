@@ -26,7 +26,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('user.create', compact('users'));
+        return view('users.create', compact('users'));
     }
 
     /**
@@ -50,7 +50,7 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        return view('user.show', compact('users'));
+        return view('users.show', compact('users'));
     }
 
     /**
@@ -62,7 +62,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        return view('user.edit', compact('users'));
+        return view('users.edit', compact('users'));
     }
 
     /**

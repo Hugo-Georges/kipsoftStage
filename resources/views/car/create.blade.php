@@ -70,7 +70,7 @@
             </div>
 
             <div class="form-group">
-                <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ $user }}"/>
+                <input type="hidden" class="form-control" name="user_id" id="user_id" value={{ $user }}/>
             </div>
 
             <br>
@@ -81,6 +81,7 @@
                 <a href="{{ route('preview') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
             </div>
         </form>
+        <p>{{ $user }}</p>
   </div>
 </div>
 </div>

@@ -51,7 +51,7 @@
                 <label for="motor">Motorisation de la voiture :</label>
                 <select class="form-select" id="motor_id" name="motor_id">
                     @foreach ($motors as $motor)
-                        <option value="{{ $motor->type }}">{{ $motor->type }}</option>
+                        <option value="{{ $motor->id }}">{{ $motor->type }}</option>
                     @endforeach
                 </select>
             </div>
@@ -72,7 +72,7 @@
             </div>
 
             <div class="form-group">
-                <input type="hidden" class="form-control" name="user_id" min="0" value="{{ $car->user_id }}"/>
+                <input type="hidden" class="form-control" name="user_id" value="{{ $car->user_id }}"/>
             </div>
 
             <br>

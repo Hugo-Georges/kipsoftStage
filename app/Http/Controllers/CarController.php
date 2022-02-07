@@ -51,7 +51,7 @@ class CarController extends Controller
      */
     public function myCars()
     {
-        $user = 3;
+        $user = Car::get_current_user();
         $motors = Motorisation::all();
         $cars = Car::query()
         ->where('user_id', '=', $user)
@@ -68,6 +68,7 @@ class CarController extends Controller
      */
     public function create()
     {
+        $user = 4 /*get_current_user()*/;
         $motors = Motorisation::all();
         $finalYear = Car::currentYear();
         $startYear = Car::year();
@@ -83,6 +84,7 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Car::get_current_user();
         $validatedData = $request->validate([
             'marque' => 'required|max:255',
             'modele' => 'required|max:255',
@@ -91,12 +93,12 @@ class CarController extends Controller
             'annee' => 'required',
             'km' => 'required',
             'motor_id' => 'required',
-            'user_id' => 'required',
+            //'user_id' => 'required',
         ]);
-
+        $validatedData['user_id'] = $user;
         $car = Car::create($validatedData);
 
-        return redirect('/cars')->with('success', 'Voiture créer avec succès');
+        return redirect('/dashboard')->with('success', 'Voiture créer avec succès');
     }
 
     /**
@@ -111,6 +113,7 @@ class CarController extends Controller
         $motors = Motorisation::all();
         $finalYear = Car::currentYear();
         $startYear = Car::year();
+
         return view('car.edit', compact('car','motors', 'finalYear', 'startYear'));
     }
 
@@ -133,7 +136,6 @@ class CarController extends Controller
             'motor_id' => 'required',
             'user_id' => 'required',
         ]);
-
         Car::whereId($id)->update($validatedData);
 
         return redirect('/preview')->with('success', 'Voiture mise à jour avec succèss');

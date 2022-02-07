@@ -23,7 +23,7 @@ class CommentController extends Controller
     public function create($car_id)
     {
         $motors = Motorisation::all();
-        return view('commentCreate', compact('car_id', 'motors'));
+        return view('car.commentCreate', compact('car_id', 'motors'));
     }
 
     /**

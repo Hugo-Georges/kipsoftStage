@@ -9,7 +9,7 @@ use Carbon\Carbon;
 class Car extends Model
 {
     use HasFactory;
-    protected $fillable = ['marque', 'modele', 'description', 'prix', 'annee', 'km', 'motor_id'];
+    protected $fillable = ['marque', 'modele', 'description', 'prix', 'annee', 'km', 'motor_id', 'user_id'];
 
     public function comments()
     {
@@ -18,7 +18,7 @@ class Car extends Model
 
     public function motorisation()
     {
-        return $this->belongsTo(Motorisation::class);
+        return $this->belongsTo(Motorisation::class, 'motor_id');
     }
 
     public function user()

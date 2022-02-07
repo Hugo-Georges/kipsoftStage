@@ -30,7 +30,7 @@
                 </button>
                 <form class="col-sm" action="">
                     <div class="input-group">
-                        <input class="input-group-text form-control-dark col-8" type="text" placeholder="Rechercher une voiture par marque et/ou modèle" value="{{ $search }}" name ="search" id="search" action="{{ route('index') }}">
+                        <input class="input-group-text form-control-dark col-8" type="text" placeholder="Rechercher une voiture par marque et/ou modèle" value="{{ $search }}" name ="search" id="search" action="">
                         <select class="form-select " id="search2" name="search2">
                             @foreach ($motors as $motor)
                                 <option selected="{{ $search2 == $motor->id }}" value="{{ $motor->id }}">{{ $motor->type }}</option>
@@ -63,7 +63,7 @@
                     <div class="position-sticky pt-3">
                       <ul class="nav flex-column">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="{{ route('cars.index') }}">
+                          <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">
                             <span data-feather="home"></span>
                             Dashboard
                           </a>
@@ -75,7 +75,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('user.index') }}">
+                            <a class="nav-link active" aria-current="page" href="{{ route('users.index') }}">
                               <span data-feather="home"></span>
                               Utilisateurs
                             </a>

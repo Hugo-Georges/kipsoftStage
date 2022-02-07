@@ -12,7 +12,9 @@
         Informations sur la voiture
     </div>
     <div class="card-body">
+        <img class="bd-placeholder-img card-img-top" width="20%" height="50%" src="https://loremflickr.com/320/240/car">
         <ul class="list-group list-group-flush">
+
             <li class="list-group-item">Marque : {{ $car->marque }}</li>
             <li class="list-group-item">Modele : {{ $car->modele }}</li>
             <li class="list-group-item">Anée de fabrication : {{ $car->annee }}</li>

@@ -22,7 +22,7 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Marque : {{ $car->marque }}</li>
                                     <li class="list-group-item">Modele : {{ $car->modele }}</li>
-                                    <li class="list-group-item">Motorisation : {{ $car->motor_id}}</li>
+                                    <li class="list-group-item">Motorisation : {{ $car->motorisation['type']}}</li>
                                     <li class="list-group-item">Année de fabrication : {{ $car->annee }}</li>
                                     <li class="list-group-item">Kilométrage au compteur : {{ $car->km }} km</li>
                                     <li class="list-group-item">Description : {{ $car->description }}</li>
