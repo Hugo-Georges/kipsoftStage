@@ -157,6 +157,23 @@ class CarController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function favorite($id)
+    {
+        $userId = Car::get_current_user();
+        $carId = Car::findOrFail($id);
+        $array = [$userId,$carId];
+        $var = implode(",",$array);
+        list($user,$car) = explode(",",$var);
+
+        return view('car.favorites', compact('userId','carId','array','var','user','car'));
+    }
+
+    /**
      * Remove the specified resource from storage.
      *@param  \Illuminate\Database\Schema
      * @param  int  $id

@@ -32,6 +32,7 @@ Route::get('/', function () {
 Route::get('dashboard', [CarController::class, 'dashboard'])->name('dashboard');
 Route::get('preview', [CarController::class, 'preview'])->name('preview');
 Route::get('myCars', [CarController::class, 'myCars'])->name('myCars');
+Route::get('favorites', [CarController::class, 'favorite'])->name('favorites');
 //Route::get('users', [UserController::class, 'index'])->name('index');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -21,6 +21,7 @@
                     <td>Année</td>
                     <td>Kilométrage</td>
                     <td>Motorisation</td>
+                    <td>Vendeur/</td>
                     <td colspan="3">Action</td>
                 </tr>
             </thead>
@@ -33,7 +34,8 @@
                     <td>{{$car->prix}}</td>
                         <td>{{ $car->annee }}</td>
                     <td>{{ $car->km }}</td>
-                    <td>{{ $car->motorisation['type'] }}
+                    <td>{{ $car->motorisation['type'] }}</td>
+                    <td>{{ $car->user['name'] }}</td>
                     <td><a href="{{ route('cars.show', $car->id)}}" class="btn btn-outline-info">Détail</a></td><!--Pour voir plus d'informations sur une voiture-->
                     <td><a href="{{ route('cars.edit', $car->id)}}" class="btn btn-outline-secondary">Modifier</a></td><!--Pour modifier une voiture-->
                     <td>

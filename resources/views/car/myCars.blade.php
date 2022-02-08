@@ -20,6 +20,7 @@
                             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://loremflickr.com/320/240/car">
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Vendeur : {{ $car->user['name'] }}</li>
                                     <li class="list-group-item">Marque : {{ $car->marque }}</li>
                                     <li class="list-group-item">Modele : {{ $car->modele }}</li>
                                     <li class="list-group-item">Motorisation : {{ $car->motorisation['type'] }}</li>
