@@ -38,12 +38,6 @@ class Car extends Model
         return $year;
     }
 
-    public function get_current_user()
-    {
-        $user = auth()->user();
-        return $user->id;
-    }
-
     public function search($match, $motor_id, $paginate = 10)
     {
         $query = Car::query();

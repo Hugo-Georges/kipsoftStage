@@ -53,6 +53,21 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    /*public function addFavorite()
+    {
+       $Ids = ;
+        foreach ($Ids as $Id) {
+            $favIds = implode(",");
+        }
+        return $favIds;
+    }
+
+    public function favorite()
+    {
+       $listFav = explode(",", $favIds);
+       return $listFav;
+    }*/
+
     public function search($match)
     {
         $query = User::query();
@@ -64,5 +79,11 @@ class User extends Authenticatable
             });
         }
         return $query->orderBy('id', 'asc')->paginate(10);
+    }
+
+    public function getCurrentUser()
+    {
+        $user = auth()->user();
+        return $user->id;
     }
 }

@@ -51,7 +51,7 @@ class CarController extends Controller
      */
     public function myCars()
     {
-        $user = Car::get_current_user();
+        $user = User::getCurrentUser();
         $motors = Motorisation::all();
         $cars = Car::query()
         ->where('user_id', '=', $user)
@@ -68,11 +68,11 @@ class CarController extends Controller
      */
     public function create()
     {
-        $user = 4 /*get_current_user()*/;
+        $user = 4 /*getCurrentUser()*/;
         $motors = Motorisation::all();
         $finalYear = Car::currentYear();
         $startYear = Car::year();
-        $user = Car::get_current_user();
+        $user = User::getCurrentUser();
         return view('car.create', compact('motors', 'finalYear', 'startYear', 'user'));
     }
 
@@ -84,7 +84,7 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Car::get_current_user();
+        $user = User::getCurrentUser();
         $validatedData = $request->validate([
             'marque' => 'required|max:255',
             'modele' => 'required|max:255',
@@ -162,16 +162,7 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function favorite($id)
-    {
-        $userId = Car::get_current_user();
-        $carId = Car::findOrFail($id);
-        $array = [$userId,$carId];
-        $var = implode(",",$array);
-        list($user,$car) = explode(",",$var);
 
-        return view('car.favorites', compact('userId','carId','array','var','user','car'));
-    }
 
     /**
      * Remove the specified resource from storage.
