@@ -32,7 +32,7 @@
                     <td>{{$car->marque}}</td>
                     <td>{{$car->modele }}
                     <td>{{$car->prix}}</td>
-                        <td>{{ $car->annee }}</td>
+                    <td>{{ $car->annee }}</td>
                     <td>{{ $car->km }}</td>
                     <td>{{ $car->motorisation['type'] }}</td>
                     <td>{{ $car->user['name'] }}</td>

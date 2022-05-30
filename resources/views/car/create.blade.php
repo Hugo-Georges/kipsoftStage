@@ -81,8 +81,7 @@
                 <a href="{{ route('preview') }}" class="btn btn-outline-primary pull-right" role="button">Retour</a>
             </div>
         </form>
-        <p>{{ $user }}</p>
-  </div>
+    </div>
 </div>
 </div>
 @endsection

@@ -15,6 +15,7 @@
         <img class="bd-placeholder-img card-img-top" width="20%" height="50%" src="https://loremflickr.com/320/240/car">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Vendeur : {{ $car->user['name'] }}</li>
+            <li class="list-group-item">Contact : {{ $car->user['email'] }}</li>
             <li class="list-group-item">Marque : {{ $car->marque }}</li>
             <li class="list-group-item">Modele : {{ $car->modele }}</li>
             <li class="list-group-item">Anée de fabrication : {{ $car->annee }}</li>
@@ -33,7 +34,7 @@
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-outline-danger" type="submit">Supprimer</button>
-              </form>
+            </form>
         @endforeach
         @endif
         <br>

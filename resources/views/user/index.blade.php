@@ -26,8 +26,6 @@
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email }}
-                    <td><a href="{{ route('users.show', $user->id)}}" class="btn btn-outline-info">Détail</a></td><!--Pour voir plus d'informations sur un utilisateur-->
-                    <td><a href="{{ route('users.edit', $user->id)}}" class="btn btn-outline-secondary">Modifier</a></td><!--Pour modifier un utilisateur-->
                     <td>
                         <form action="{{ route('users.destroy', $user->id)}}" method="post"><!--Pour supprimer un utilisateur-->
                             @csrf

@@ -98,7 +98,7 @@ class CarController extends Controller
         $validatedData['user_id'] = $user;
         $car = Car::create($validatedData);
 
-        return redirect('/dashboard')->with('success', 'Voiture créer avec succès');
+        return redirect('/preview')->with('success', 'Voiture créer avec succès');
     }
 
     /**
